@@ -1,0 +1,8 @@
+.ant-layout-header {
+    height: auto !important;
+}
+
+.ant-menu-vertical .ant-menu-item {
+    height: auto !important;
+    overflow: auto;
+}
