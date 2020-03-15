@@ -7,6 +7,7 @@ import { MenuOutlined, UserOutlined } from "@ant-design/icons";
 import MainContainer from "../components/MainContainer";
 import SideBar from "../components/SideBar";
 
+const breakpoint = 760;
 const { Header, Content } = Layout;
 
 function MainLayout({ children }) {
@@ -38,7 +39,7 @@ function MainLayout({ children }) {
             style={{ marginRight: 20 }}
           />
         </div>
-        <MediaQuery minWidth={700}>
+        <MediaQuery minWidth={breakpoint}>
           <Menu
             theme="dark"
             mode="horizontal"
@@ -90,7 +91,7 @@ function MainLayout({ children }) {
             </Menu.Item>
           </Menu>
         </MediaQuery>
-        <MediaQuery maxWidth={700}>
+        <MediaQuery maxWidth={breakpoint}>
           <SideBar openMenu={openMenu} />
           <Menu
             theme="dark"
