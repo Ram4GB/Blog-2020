@@ -6,6 +6,7 @@
     overflow: hidden;
     width: 0;
     transition: width 0.8s ease;
+    z-index: 1;
 }
 
 .navbar.active {

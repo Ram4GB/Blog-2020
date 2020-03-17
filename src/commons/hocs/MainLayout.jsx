@@ -6,6 +6,7 @@ import MediaQuery from "react-responsive";
 import { MenuOutlined, UserOutlined } from "@ant-design/icons";
 import MainContainer from "../components/MainContainer";
 import SideBar from "../components/SideBar";
+import logo from "../../logo.svg";
 
 const breakpoint = 760;
 const { Header, Content } = Layout;
@@ -33,11 +34,7 @@ function MainLayout({ children }) {
         }}
       >
         <div className="logo">
-          <img
-            src="https://codelearnstorage.s3.amazonaws.com/Themes/TheCodeCampPro/Resources-cdn/Images/code-learn/logo-codelearn.svg"
-            alt=""
-            style={{ marginRight: 20 }}
-          />
+          <img src={logo} alt="" style={{ marginRight: 20, width: 50, height: 50 }} />
         </div>
         <MediaQuery minWidth={breakpoint}>
           <Menu

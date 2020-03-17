@@ -9,16 +9,14 @@ import {
   MessageOutlined
 } from "@ant-design/icons";
 import PropTypes from "prop-types";
+import logo from "../../logo.svg";
 
 export default function SideBar({ openMenu }) {
   return (
     <nav className={`navbar ${openMenu ? "active" : ""}`}>
       <Menu defaultSelectedKeys={["/"]} theme="dark" className="navbar-nav">
         <Menu.Item className="nav-item">
-          <img
-            src="https://codelearnstorage.s3.amazonaws.com/Themes/TheCodeCampPro/Resources-cdn/Images/code-learn/logo-codelearn.svg"
-            alt=""
-          />
+          <img style={{ width: 50, height: 50, margin: "auto" }} src={logo} alt="" />
         </Menu.Item>
         <Menu.Item key="/" className="nav-item">
           <HomeOutlined />
