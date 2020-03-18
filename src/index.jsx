@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import "./commons/assets/css/custom-ant.css";
 import "./commons/assets/css/sidebar.css";
+import "./commons/assets/css/blog-card.css";
+import "./commons/assets/css/left-sidebar.css";
 import * as serviceWorker from "./serviceWorker";
 import Root from "./commons/hocs/Root";
 import store from "./modules/index";

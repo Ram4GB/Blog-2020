@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { useHistory, useLocation } from "react-router";
 import MediaQuery from "react-responsive";
 import { MenuOutlined, UserOutlined } from "@ant-design/icons";
-import MainContainer from "../components/MainContainer";
 import SideBar from "../components/SideBar";
 import logo from "../../logo.svg";
 
@@ -45,8 +44,9 @@ function MainLayout({ children }) {
             onSelect={handleSelectMenu}
           >
             <Menu.Item key="/">Trang chủ</Menu.Item>
-            <Menu.Item key="/blogs">Blogs</Menu.Item>
-            <Menu.Item key="/news">Tin tức</Menu.Item>
+            {/* <Menu.Item key="/about">Về tôi</Menu.Item> */}
+            {/* <Menu.Item key="/news">Tin tức</Menu.Item> */}
+            <Menu.Item key="/write_blog">Viết blog</Menu.Item>
             <Menu.Item style={{ float: "right" }} key="/login">
               Đăng nhập
             </Menu.Item>
@@ -106,9 +106,7 @@ function MainLayout({ children }) {
         </MediaQuery>
       </Header>
       <Content style={{ backgroundColor: "#fff" }}>
-        <div className="site-layout-content">
-          <MainContainer>{children}</MainContainer>
-        </div>
+        <div className="site-layout-content">{children}</div>
       </Content>
     </Layout>
   );

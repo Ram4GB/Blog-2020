@@ -6,3 +6,24 @@
     height: auto !important;
     overflow: auto;
 }
+
+.ant-layout-header{
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.ant-layout-content {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.form .ant-form-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.form .ant-form-item-label{
+    text-align: left;
+}
+
+.form .mde-text{
+    resize: none !important;
+}

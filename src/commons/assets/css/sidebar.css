@@ -25,6 +25,7 @@
     align-items: center;
     width: 100%;
     padding:10px 10px !important;
+    overflow: hidden;
 }
 
 .navbar-nav .nav-item:last-child{
