@@ -25,11 +25,14 @@ const database = firebase.firestore();
 
 export const getDataCollects = async collectionName => {
   const data = await database.collection(collectionName).get();
-  const array = [];
-  data.forEach(element => {
-    return array.push({ ...element.data(), id: element.id });
-  });
-  return array;
+  if (data) {
+    const array = [];
+    data.forEach(element => {
+      return array.push({ ...element.data(), id: element.id });
+    });
+    return array;
+  }
+  return null;
 };
 
 export const addBlogs = async (collectionName, data) => {
@@ -78,35 +81,16 @@ export const onAuthStateChanged = callback => {
   }
 };
 
-export const signInWithEmailAndPassword = async (email, password) => {
-  try {
-    const result = await firebase.auth().signInWithEmailAndPassword(email, password);
-    return result;
-  } catch (error) {
-    return error;
-  }
+export const signInWithEmailAndPassword = (email, password) => {
+  return firebase.auth().signInWithEmailAndPassword(email, password);
 };
 
-export const logoutFirebase = async () => {
-  try {
-    firebase.auth().signOut();
-    return true;
-  } catch (error) {
-    return false;
-  }
+export const logoutFirebase = () => {
+  return firebase.auth().signOut();
 };
 
 export const loginWithGoogleFirebase = () => {
-  firebase
-    .auth()
-    .signInWithPopup(googleProvider)
-    .then(result => {
-      if (result) return result;
-      return null;
-    })
-    .catch(error => {
-      return error;
-    });
+  return firebase.auth().signInWithPopup(googleProvider);
 };
 
 export const loginWithFacebookFirebase = () => {
@@ -118,7 +102,6 @@ export const loginWithFacebookFirebase = () => {
       return null;
     })
     .catch(error => {
-      console.log(error);
       return error;
     });
 };

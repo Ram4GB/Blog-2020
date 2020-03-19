@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Form, Input, Button, Col, Row } from "antd";
-import { UserOutlined, CodeFilled } from "@ant-design/icons";
+import { Form, Input, Button } from "antd";
+import { UserOutlined, CodeFilled, GoogleOutlined } from "@ant-design/icons";
 import * as actions from "../modules/users/actions";
 
 export default function Loginpage() {
@@ -13,14 +13,6 @@ export default function Loginpage() {
 
   const LoginWithGoogle = () => {
     dispatch(actions.loginWithGoogle());
-  };
-
-  const LoginWithFacebook = () => {
-    dispatch(actions.loginWithFacebook());
-  };
-
-  const LoginWithGithub = () => {
-    dispatch(actions.loginWithGithub());
   };
 
   return (
@@ -56,18 +48,10 @@ export default function Loginpage() {
           <Button type="primary" htmlType="submit">
             Đăng nhập
           </Button>
+          <Button className="button-google" onClick={LoginWithGoogle}>
+            <GoogleOutlined />
+          </Button>
         </Form.Item>
-        <Row>
-          <Col lg={8}>
-            <Button onClick={LoginWithGoogle}>Google</Button>
-          </Col>
-          <Col lg={8}>
-            <Button onClick={LoginWithFacebook}>Facebook</Button>
-          </Col>
-          <Col lg={8}>
-            <Button onClick={LoginWithGithub}>Github</Button>
-          </Col>
-        </Row>
       </Form>
     </div>
   );

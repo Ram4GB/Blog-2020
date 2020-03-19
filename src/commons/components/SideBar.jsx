@@ -3,20 +3,28 @@ import { Menu } from "antd";
 import {
   HomeOutlined,
   // NotificationOutlined,
-  // SettingOutlined,
+  SettingOutlined,
   SnippetsOutlined
   // UserOutlined
   // MessageOutlined
 } from "@ant-design/icons";
 import PropTypes from "prop-types";
-import { useHistory } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
 import logo from "../../logo.svg";
+import * as actionSagaUser from "../../modules/users/actions";
+import { MODULE_NAME as MODULE_USER } from "../../modules/users/models";
 
 export default function SideBar({ openMenu }) {
-  const history = useHistory();
+  const dispatch = useDispatch();
+  const user = useSelector(state => state[MODULE_USER].user);
+  const isLogin = useSelector(state => state[MODULE_USER].isLogin);
 
   const handleSelect = value => {
-    history.push(`${value.key}`);
+    dispatch(actionSagaUser.redirect(value.key));
+  };
+
+  const handleLogout = () => {
+    dispatch(actionSagaUser.logout());
   };
 
   return (
@@ -29,10 +37,23 @@ export default function SideBar({ openMenu }) {
           <HomeOutlined />
           <span className="nav-text">Trang chủ</span>
         </Menu.Item>
-        <Menu.Item key="/write_blog" className="nav-item">
-          <SnippetsOutlined />
-          <span className="nav-text">Viết Blogs</span>
-        </Menu.Item>
+        {user && (user.uid === "" || user.uid === "") ? (
+          <Menu.Item key="/write_blog" className="nav-item">
+            <SnippetsOutlined />
+            <span className="nav-text">Viết Blogs</span>
+          </Menu.Item>
+        ) : null}
+        {isLogin === false ? (
+          <Menu.Item style={{ float: "right" }} key="/login">
+            <SettingOutlined />
+            <span className="nav-text">Đăng nhập</span>
+          </Menu.Item>
+        ) : (
+          <Menu.Item style={{ float: "right" }} onClick={handleLogout}>
+            <SettingOutlined />
+            <span className="nav-text">Đăng xuất</span>
+          </Menu.Item>
+        )}
         {/* <Menu.Item key="/news" className="nav-item">
           <NotificationOutlined />
           <span className="nav-text">News</span>

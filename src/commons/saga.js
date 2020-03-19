@@ -11,11 +11,13 @@ import {
   loginWithGithubFirebase
 } from "./utils/firebase";
 import * as actionsUser from "../modules/users/reducers";
+import * as actionsUI from "../modules/ui/reducers";
 
 function* loadBlog() {
   try {
     const result = yield call(getDataCollects, "blogs");
     if (result) yield put(actionsBlog.REDUCER_LOAD_BLOG_SUCCESS(result));
+    else yield put(actionsUI.ERROR_FIREBASE({ message: "Cant not load data now" }));
   } catch (error) {
     yield put(actionsBlog.REDUCER_LOAD_BLOG_FAIL(error));
   }
@@ -29,23 +31,32 @@ function* login(action) {
       action.payload.password
     );
     yield put(actionsUser.LOGIN_SUCCESS(result));
+    yield put(actionsUI.REDIRECT_URL("/"));
   } catch (error) {
+    yield put(actionsUI.ERROR_FIREBASE(error));
     yield put(actionsUser.LOGIN_FAIL(error));
   }
 }
 
 function* logout() {
-  const result = yield call(logoutFirebase);
-  if (result) yield put(actionsUser.LOG_OUT_SUCCESS());
-  else yield put(actionsUser.LOG_OUT_FAIL());
+  try {
+    yield call(logoutFirebase);
+    yield put(actionsUI.REDIRECT_URL("/"));
+    yield put(actionsUI.SUCCESS_MESSAGE("Đăng xuất thành công"));
+    yield put(actionsUser.LOG_OUT_SUCCESS());
+  } catch (error) {
+    yield put(actionsUI.ERROR_FIREBASE(error));
+  }
 }
 
 function* loginWithGoogle() {
   try {
     const result = yield call(loginWithGoogleFirebase);
     yield put(actionsUser.LOGIN_SUCCESS(result));
+    yield put(actionsUI.REDIRECT_URL("/"));
+    yield put(actionsUI.SUCCESS_MESSAGE("Chào mừng bạn tới với blog"));
   } catch (error) {
-    yield put(actionsUser.LOGIN_FAIL(error));
+    yield put(actionsUI.ERROR_FIREBASE(error));
   }
 }
 
@@ -67,6 +78,10 @@ function* loginWithGithub() {
   }
 }
 
+function* redirect(action) {
+  yield put(actionsUI.REDIRECT_URL(action.payload));
+}
+
 export default function* rootSaga() {
   yield takeEvery(actionsSagaBlog.loadBlog, loadBlog);
   yield takeEvery(actionsSagaUser.login, login);
@@ -74,4 +89,5 @@ export default function* rootSaga() {
   yield takeEvery(actionsSagaUser.loginWithGoogle, loginWithGoogle);
   yield takeEvery(actionsSagaUser.loginWithGithub, loginWithGithub);
   yield takeEvery(actionsSagaUser.loginWithFacebook, loginWithFacebook);
+  yield takeEvery(actionsSagaUser.redirect, redirect);
 }

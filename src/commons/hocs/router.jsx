@@ -12,15 +12,30 @@ import NotFoundPage from "../../pages/NotFoundPage";
 
 export default function Router() {
   const isLogin = useSelector(state => state[MODULE_NAME].isLogin);
-
-  if (isLogin) {
+  const user = useSelector(state => state[MODULE_NAME].user);
+  if (isLogin && user) {
+    if (
+      user.uid === "DLfYXSeopuQQWqLsitrPUgDR8Ri2" ||
+      user.uid === "xCCUSbJAofc2AsIFPhjxJjAKP6f1"
+    ) {
+      return (
+        <MainLayout admin>
+          <Switch>
+            <Route exact path="/" component={Homepage} />
+            <Route exact path="/about" component={AboutPage} />
+            <Route exact path="/:id/blog" component={BlogInformation} />
+            <Route exact path="/write_blog" component={WriteBlogPage} />
+            <Route exact path="/:id/blog/edit" component={WriteBlogPage} />
+            <Route exact path="*" component={NotFoundPage} />
+          </Switch>
+        </MainLayout>
+      );
+    }
     return (
       <MainLayout>
         <Switch>
           <Route exact path="/" component={Homepage} />
           <Route exact path="/about" component={AboutPage} />
-          <Route exact path="/write_blog" component={WriteBlogPage} />
-          <Route exact path="/:id/blog/edit" component={WriteBlogPage} />
           <Route exact path="/:id/blog" component={BlogInformation} />
           <Route exact path="*" component={NotFoundPage} />
         </Switch>

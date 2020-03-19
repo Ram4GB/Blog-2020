@@ -28,6 +28,10 @@
     overflow: hidden;
 }
 
+.navbar-nav .nav-text{
+    font-weight: bold;
+}
+
 .navbar-nav .nav-item:last-child{
     margin-top: auto;
 }

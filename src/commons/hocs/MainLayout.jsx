@@ -1,29 +1,51 @@
 import React, { useEffect, useState } from "react";
-import { Layout, Menu, Dropdown } from "antd";
+import { Layout, Menu, Dropdown, notification } from "antd";
 import PropTypes from "prop-types";
 import { useHistory, useLocation } from "react-router";
 import MediaQuery from "react-responsive";
-import { MenuOutlined, UserOutlined } from "@ant-design/icons";
+import { MenuOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import SideBar from "../components/SideBar";
 import logo from "../../logo.svg";
-import { MODULE_NAME } from "../../modules/users/models";
+import { MODULE_NAME as MODULE_UI } from "../../modules/ui/models";
+import { MODULE_NAME as MODULE_USER } from "../../modules/users/models";
 import * as actionSagaUser from "../../modules/users/actions";
 
 const breakpoint = 760;
 const { Header, Content } = Layout;
 
-function MainLayout({ children }) {
+function MainLayout({ children, admin }) {
   const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
+  const error = useSelector(state => state[MODULE_UI].error);
+  const currentURL = useSelector(state => state[MODULE_UI].currentURL);
+  const success = useSelector(state => state[MODULE_UI].success);
   const [openMenu, setOpenMenu] = useState(false);
   const [defaultKeyMenu, setDefaultKeyMenu] = useState("/");
-  const isLogin = useSelector(state => state[MODULE_NAME].isLogin);
+  const isLogin = useSelector(state => state[MODULE_USER].isLogin);
 
   const handleSelectMenu = link => {
-    history.push(link.key);
+    dispatch(actionSagaUser.redirect(link.key));
   };
+
+  useEffect(() => {
+    if (error)
+      notification.error({
+        message: error
+      });
+  }, [error]);
+
+  useEffect(() => {
+    if (success)
+      notification.success({
+        message: success
+      });
+  }, [success]);
+
+  useEffect(() => {
+    if (currentURL) history.push(`${currentURL}`);
+  }, [currentURL, history]);
 
   useEffect(() => {
     setDefaultKeyMenu(location.pathname);
@@ -55,7 +77,7 @@ function MainLayout({ children }) {
             <Menu.Item key="/">Trang chủ</Menu.Item>
             {/* <Menu.Item key="/about">Về tôi</Menu.Item> */}
             {/* <Menu.Item key="/news">Tin tức</Menu.Item> */}
-            <Menu.Item key="/write_blog">Viết blog</Menu.Item>
+            {admin ? <Menu.Item key="/write_blog">Viết blog</Menu.Item> : null}
             {isLogin === false ? (
               <Menu.Item style={{ float: "right" }} key="/login">
                 Đăng nhập
@@ -65,10 +87,10 @@ function MainLayout({ children }) {
                 Đăng xuất
               </Menu.Item>
             )}
-            <Menu.Item style={{ float: "right" }}>
+            {/* <Menu.Item style={{ float: "right" }}>
               <UserOutlined />
-            </Menu.Item>
-            <Menu.Item style={{ float: "right" }}>
+            </Menu.Item> */}
+            <Menu.Item disabled style={{ float: "right" }}>
               <Dropdown
                 overlay={() => {
                   return (
@@ -128,11 +150,13 @@ function MainLayout({ children }) {
 }
 
 MainLayout.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  admin: PropTypes.bool
 };
 
 MainLayout.defaultProps = {
-  children: null
+  children: null,
+  admin: false
 };
 
 export default MainLayout;
