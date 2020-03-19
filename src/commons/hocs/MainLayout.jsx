@@ -4,8 +4,11 @@ import PropTypes from "prop-types";
 import { useHistory, useLocation } from "react-router";
 import MediaQuery from "react-responsive";
 import { MenuOutlined, UserOutlined } from "@ant-design/icons";
+import { useSelector, useDispatch } from "react-redux";
 import SideBar from "../components/SideBar";
 import logo from "../../logo.svg";
+import { MODULE_NAME } from "../../modules/users/models";
+import * as actionSagaUser from "../../modules/users/actions";
 
 const breakpoint = 760;
 const { Header, Content } = Layout;
@@ -13,8 +16,10 @@ const { Header, Content } = Layout;
 function MainLayout({ children }) {
   const history = useHistory();
   const location = useLocation();
+  const dispatch = useDispatch();
   const [openMenu, setOpenMenu] = useState(false);
   const [defaultKeyMenu, setDefaultKeyMenu] = useState("/");
+  const isLogin = useSelector(state => state[MODULE_NAME].isLogin);
 
   const handleSelectMenu = link => {
     history.push(link.key);
@@ -23,6 +28,10 @@ function MainLayout({ children }) {
   useEffect(() => {
     setDefaultKeyMenu(location.pathname);
   }, [location.pathname]);
+
+  const handleLogout = () => {
+    dispatch(actionSagaUser.logout());
+  };
 
   return (
     <Layout className="layout">
@@ -47,9 +56,15 @@ function MainLayout({ children }) {
             {/* <Menu.Item key="/about">Về tôi</Menu.Item> */}
             {/* <Menu.Item key="/news">Tin tức</Menu.Item> */}
             <Menu.Item key="/write_blog">Viết blog</Menu.Item>
-            <Menu.Item style={{ float: "right" }} key="/login">
-              Đăng nhập
-            </Menu.Item>
+            {isLogin === false ? (
+              <Menu.Item style={{ float: "right" }} key="/login">
+                Đăng nhập
+              </Menu.Item>
+            ) : (
+              <Menu.Item style={{ float: "right" }} onClick={handleLogout}>
+                Đăng xuất
+              </Menu.Item>
+            )}
             <Menu.Item style={{ float: "right" }}>
               <UserOutlined />
             </Menu.Item>
