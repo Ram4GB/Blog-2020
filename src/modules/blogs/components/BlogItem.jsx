@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { Tag } from "antd";
 import { useHistory } from "react-router";
 import moment from "moment";
+import ReactMarkdown from "react-markdown";
+import CodeBlock from "../../../commons/components/CodeBlock";
 
 export default function BlogItem({ blog }) {
   const history = useHistory();
@@ -11,6 +13,7 @@ export default function BlogItem({ blog }) {
     return categories.map((tag, index) => {
       return (
         <Tag
+          // eslint-disable-next-line react/no-array-index-key
           key={`blog.id_${index}`}
           style={{ marginLeft: 5, textTransform: "uppercase" }}
           color="pink"
@@ -33,7 +36,9 @@ export default function BlogItem({ blog }) {
 
         <span className="author">{blog.author}</span>
         <span className="date">{moment(new Date(blog.date)).format("MMMM Do YYYY")}</span>
-        <p className="small-text">{blog.description}</p>
+        <div className="small-text">
+          <ReactMarkdown renderers={{ code: CodeBlock }} source={blog.description} />
+        </div>
         <button
           type="button"
           onClick={() => history.push(`/${blog.id}/blog`)}

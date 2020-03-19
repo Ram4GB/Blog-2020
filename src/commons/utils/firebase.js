@@ -37,4 +37,13 @@ export const getBlog = async (collectionName, docId) => {
   return result.data();
 };
 
+export const editBlog = async (collectionName, docId, newDoc) => {
+  const result = await database
+    .collection(collectionName)
+    .doc(docId)
+    .update(newDoc)
+    .then(() => getBlog(collectionName, docId));
+  return result;
+};
+
 export default null;

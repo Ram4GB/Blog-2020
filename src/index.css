@@ -19,32 +19,8 @@ h1,h2,h3,h4,h5,h6,p{
   margin-bottom: 20px !important;
 }
 
-.ant-menu-vertical .ant-menu-item.logo {
-  height: 64px !important;
-  margin: 0 !important;
-}
-
-.ant-menu-vertical .ant-menu-item{
-  margin-top: 0 !important;
-}
-
 .mde-tabs{
   display: none !important;
-}
-
-.blog-information .title{
-  text-align: center;
-  font-weight: bold;
-}
-
-.blog-information p{
-  line-height: 1.5;
-}
-
-@media only screen and (max-width: 700px) {
-  .blog-information{
-    font-size: 0.9rem;
-  }
 }
 
 ::-webkit-scrollbar {
@@ -63,6 +39,11 @@ table {
 table, th, td {
   border: 2px solid #dfdfdf;
 }
+
+table tr td:first-child {
+  font-weight: bold;
+}
+
 th, td {
   padding: 15px;
   text-align: left;

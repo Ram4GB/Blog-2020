@@ -27,3 +27,12 @@
 .form .mde-text{
     resize: none !important;
 }
+
+.ant-menu-vertical .ant-menu-item.logo {
+    height: 64px !important;
+    margin: 0 !important;
+}
+
+.ant-menu-vertical .ant-menu-item{
+    margin-top: 0 !important;
+}
