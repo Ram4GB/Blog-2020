@@ -56,9 +56,9 @@ export default function WriteBlogPage() {
   };
 
   return (
-    <div className="container-90">
-      <Row gutter={6}>
-        <Col sm={24} md={24} lg={12}>
+    <div className="container-90 blog-editor">
+      <Row style={{ display: "flex", alignItems: "center" }}>
+        <Col className="editor" sm={24} md={24} lg={24}>
           <Form form={form} name="form-blog" className="form" onFinish={handleSubmit}>
             <Form.Item label="Tiêu đề" name="title">
               <Input placeholder="Ghi tiêu đề..." />
@@ -66,10 +66,12 @@ export default function WriteBlogPage() {
             <Form.Item label="Mô tả" name="description">
               <ReactMde minEditorHeight="300px" maxEditorHeight="300px" onChange={handleChange} />
             </Form.Item>
-            <Button htmlType="submit">Xác nhận hoàn thành</Button>
+            <Button className="button-submit" htmlType="submit">
+              Xác nhận hoàn thành
+            </Button>
           </Form>
         </Col>
-        <Col className="previewer" sm={24} md={24} lg={12}>
+        <Col className="previewer" sm={24} md={24} lg={24}>
           <ReactMarkdown
             textAreaProps={{ style: { resize: "none" } }}
             renderers={{ code: CodeBlock }}

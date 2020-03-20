@@ -1,0 +1,178 @@
+.ant-layout.layout.dark .ant-layout-content {
+    background-color: #333333 !important;
+}
+
+/* .ant-layout.layout.dark .site-layout-content {
+    background-color: #333333 !important;
+} */
+
+.ant-layout.layout.dark .ant-layout-header{
+    background-color: #111111;
+    border-bottom: 1px solid #111111;
+}
+
+/* Menu */
+.ant-layout.layout.dark .ant-layout-header .ant-menu{
+    border-bottom: none;
+    display: flex;
+    background-color: #111111;
+}
+
+.ant-layout.layout.dark .ant-layout-header .login {
+    margin-left: auto;
+}
+
+.ant-layout.layout.dark .ant-layout-header .language {
+}
+
+.ant-layout.layout.dark .ant-layout-header .ant-menu-item{
+    margin-top: 0px;
+    color: #ffffff;
+    height: 66px;
+}
+
+.ant-layout.layout.dark .ant-layout-header .ant-menu-item .button-toggle{
+    background-color: #111111;
+}
+
+.ant-layout.layout.dark .ant-layout-header .ant-menu-item-selected.button-toggle{
+    background-color: #111111;
+}
+
+.ant-layout.layout.dark .ant-layout-header .ant-menu-item:hover.button-toggle{
+    border: none !important;
+}
+
+.ant-layout.layout.dark .ant-layout-header .ant-menu-item-selected {
+    border-bottom: none;
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.ant-layout.layout.dark .ant-layout-header .ant-menu-horizontal > .ant-menu-item:hover {
+    border-bottom: 2px solid #ffffff;
+}
+
+
+/* Blog card */
+
+.ant-layout.layout.dark .blog-card {
+    background-color: #111111;
+    border: none;
+}
+
+.ant-layout.layout.dark .blog-card h3{
+    color: #cccccc;
+}
+
+.ant-layout.layout.dark .blog-card .small-text h2,.ant-layout.layout.dark .blog-card .small-text h1,
+.ant-layout.layout.dark .blog-card .small-text h3,
+.ant-layout.layout.dark .blog-card .small-text h4,
+.ant-layout.layout.dark .blog-card .small-text h5,
+.ant-layout.layout.dark .blog-card .small-text h6,
+.ant-layout.layout.dark .blog-card .small-text code,
+.ant-layout.layout.dark .blog-card .small-text ul,
+.ant-layout.layout.dark .blog-card .small-text p{
+    color: #ffffff;
+}
+
+.ant-layout.layout.dark .blog-card .read-more {
+    background-color: #111111;
+    color: green;
+    font-weight: bold;
+}
+
+.ant-layout.layout.dark .form-login{
+    border: 3px solid #111111;
+    background-color: #111111;
+    border-radius: 5px;
+}
+
+.ant-layout.layout.dark .ant-btn.ant-btn-primary {
+    background-color: #111111;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    font-weight: bold;
+}
+
+.ant-layout.layout.dark .ant-btn.button-google {
+    color: red;
+    margin-top: 20px;
+}
+ 
+.ant-layout.layout.dark .ant-btn:hover{
+    border: 1px solid #ffffff;
+}
+
+.ant-layout.layout.dark .ant-btn.ant-btn-primary:hover {
+    background-color: #ffffff;
+    color: #111111;
+    border: 1px solid #ffffff;
+}
+
+.ant-layout.layout.dark .form-login label{
+    color: #cccccc;
+}
+
+.ant-layout.layout.dark .blog-information code,
+.ant-layout.layout.dark .blog-information pre,
+.ant-layout.layout.dark .blog-information ul li,
+.ant-layout.layout.dark .blog-information p,
+.ant-layout.layout.dark .blog-information table{
+    color: #ffffff;   
+}
+
+.ant-layout.layout.dark .blog-information h1,
+.ant-layout.layout.dark .blog-information h2,
+.ant-layout.layout.dark .blog-information h3,
+.ant-layout.layout.dark .blog-information h4,
+.ant-layout.layout.dark .blog-information h5,
+.ant-layout.layout.dark .blog-information h6{
+    color: rgb(86, 86, 194);
+}
+
+.ant-layout.layout.dark .blog-editor h1,
+.ant-layout.layout.dark .blog-editor h2,
+.ant-layout.layout.dark .blog-editor h3,
+.ant-layout.layout.dark .blog-editor h4,
+.ant-layout.layout.dark .blog-editor h5,
+.ant-layout.layout.dark .blog-editor h6{
+    color: rgb(86, 86, 194);
+}
+
+.ant-layout.layout.dark .blog-editor code,
+.ant-layout.layout.dark .blog-editor pre,
+.ant-layout.layout.dark .blog-editor ul li,
+.ant-layout.layout.dark .blog-editor p,
+.ant-layout.layout.dark .blog-editor table{
+    color: #ffffff;   
+}
+
+.ant-layout.layout.dark label {
+    color: #cccccc;
+    font-weight: bold;
+}
+
+.ant-layout.layout.dark textarea {
+    background-color: #333333;
+    color: #ffffff;
+    font-family: 'Fira Code', monospace;
+    font-size: 1.2rem;
+}
+
+.ant-layout.layout.dark .blog-editor button {
+    width: 100%;
+}
+
+.ant-layout.layout.dark .previewer {
+    border: 1px solid #ffffff;
+}
+
+.ant-layout.layout.dark .blog-editor .button-submit{
+    width: 100%;
+    background-color: #111111;
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
+    margin-bottom: 20px;
+}

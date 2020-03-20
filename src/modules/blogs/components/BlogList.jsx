@@ -17,5 +17,5 @@ export default function BlogList() {
       return <BlogItem blog={blog} key={blog.id} />;
     });
   };
-  return <div>{renderBlogs()}</div>;
+  return renderBlogs();
 }
