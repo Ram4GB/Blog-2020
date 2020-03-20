@@ -24,12 +24,21 @@ export default function Loginpage() {
             {
               required: true,
               message: "Mời điền email"
+            },
+            {
+              type: "email",
+              message: "Mời bạn điền email"
             }
           ]}
           label="Email"
           name="email"
         >
-          <Input prefix={<UserOutlined />} autoComplete="off" placeholder="Địa chỉ Email" />
+          <Input
+            size="large"
+            prefix={<UserOutlined />}
+            autoComplete="off"
+            placeholder="Địa chỉ Email"
+          />
         </Form.Item>
         <Form.Item
           rules={[
@@ -41,14 +50,19 @@ export default function Loginpage() {
           label="Mật khẩu"
           name="password"
         >
-          <Input.Password prefix={<CodeFilled />} autoComplete="off" placeholder="Mật khẩu" />
+          <Input.Password
+            size="large"
+            prefix={<CodeFilled />}
+            autoComplete="off"
+            placeholder="Mật khẩu"
+          />
         </Form.Item>
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button size="large" type="primary" htmlType="submit">
             Đăng nhập
           </Button>
-          <Button className="button-google" onClick={LoginWithGoogle}>
+          <Button size="large" className="button-google" onClick={LoginWithGoogle}>
             <GoogleOutlined />
           </Button>
         </Form.Item>

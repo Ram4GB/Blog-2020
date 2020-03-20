@@ -20,7 +20,8 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    left: -65%;
+    left: -50%;
+    flex-direction: column;
 }
 
 .chibi-icon  li {
@@ -30,7 +31,7 @@
     padding: 13px 18px;
     border-radius: 50%;
     margin-left: 5px;
-    display: none;
+    /* display: none; */
 }
 
 .affix:hover .chibi-icon li{

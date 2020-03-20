@@ -2,6 +2,9 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap&subset=vietnamese');
 @import url('https://fonts.googleapis.com/css?family=Fira+Code:400,500,600,700&display=swap');
 
+/* font-family: 'Open Sans Condensed', sans-serif; */
+/* font-family: 'Montserrat', sans-serif; */
+
 :root {
   font-size: 16px !important;
   box-sizing: border-box !important;
@@ -49,4 +52,12 @@ table tr td:first-child {
 th, td {
   padding: 15px;
   text-align: left;
+}
+
+pre code{
+  font-family: 'Fira Code', monospace !important;
+}
+
+label {
+  font-weight: bold;
 }

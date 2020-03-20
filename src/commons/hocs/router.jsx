@@ -13,11 +13,9 @@ import NotFoundPage from "../../pages/NotFoundPage";
 export default function Router() {
   const isLogin = useSelector(state => state[MODULE_NAME].isLogin);
   const user = useSelector(state => state[MODULE_NAME].user);
+  const isAdmin = useSelector(state => state[MODULE_NAME].isAdmin);
   if (isLogin && user) {
-    if (
-      user.uid === "DLfYXSeopuQQWqLsitrPUgDR8Ri2" ||
-      user.uid === "xCCUSbJAofc2AsIFPhjxJjAKP6f1"
-    ) {
+    if (isAdmin) {
       return (
         <MainLayout admin>
           <Switch>

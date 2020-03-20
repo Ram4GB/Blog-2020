@@ -1,6 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { MODULE_NAME } from "../users/models";
 
+let theme = localStorage.getItem("theme");
+if (theme) {
+  if (theme === "light" || theme === "dark");
+  else theme = "light";
+} else theme = "light";
+
 const reducers = createSlice({
   name: [MODULE_NAME],
   initialState: {
@@ -8,7 +14,7 @@ const reducers = createSlice({
     currentURL: "",
     success: null,
     openSideBar: false,
-    theme: "light" // may you have load light first
+    theme // may you have load light first
   },
   reducers: {
     ERROR_FIREBASE: (state, action) => ({
@@ -31,10 +37,13 @@ const reducers = createSlice({
       ...state,
       openSideBar: false
     }),
-    CHANGE_THEME: (state, action) => ({
-      ...state,
-      theme: action.payload
-    })
+    CHANGE_THEME: (state, action) => {
+      localStorage.setItem("theme", action.payload);
+      return {
+        ...state,
+        theme: action.payload
+      };
+    }
   }
 });
 
