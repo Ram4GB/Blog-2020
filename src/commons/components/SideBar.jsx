@@ -30,7 +30,7 @@ export default function SideBar({ openSidebar }) {
   return (
     <nav className={`navbar ${openSidebar ? "active" : ""}`}>
       <Menu onSelect={handleSelect} defaultSelectedKeys={["/"]} theme="dark" className="navbar-nav">
-        <Menu.Item className="nav-item logo">
+        <Menu.Item disabled style={{ cursor: "pointer" }} className="nav-item logo">
           <img style={{ width: 50, height: 50, margin: "auto" }} src={logo} alt="" />
         </Menu.Item>
         <Menu.Item key="/" className="nav-item">

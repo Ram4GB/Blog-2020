@@ -3,7 +3,7 @@ import { Layout, Menu, Dropdown, notification } from "antd";
 import PropTypes from "prop-types";
 import { useHistory, useLocation } from "react-router";
 import MediaQuery from "react-responsive";
-import { MenuOutlined } from "@ant-design/icons";
+import { MenuOutlined, SettingOutlined, EyeOutlined, CaretUpOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import SideBar from "../components/SideBar";
 import logo from "../../logo.svg";
@@ -26,6 +26,7 @@ function MainLayout({ children, admin }) {
   const success = useSelector(state => state[MODULE_UI].success);
   const openSidebar = useSelector(state => state[MODULE_UI].openSideBar);
   const isLogin = useSelector(state => state[MODULE_USER].isLogin);
+  const theme = useSelector(state => state[MODULE_UI].theme);
 
   const handleSelectMenu = link => {
     dispatch(actionSagaUser.redirect(link.key));
@@ -58,41 +59,40 @@ function MainLayout({ children, admin }) {
   };
 
   return (
-    <Layout className="layout">
+    <Layout className={`layout ${theme}`}>
       <Header
         style={{
           display: "flex",
           alignItems: "center"
         }}
       >
-        <div className="logo">
-          <img src={logo} alt="" style={{ marginRight: 20, width: 50, height: 50 }} />
-        </div>
         <MediaQuery minWidth={breakpoint}>
           <Menu
-            theme="dark"
             mode="horizontal"
             defaultSelectedKeys={[defaultKeyMenu]}
             style={{ lineHeight: "64px", fontWeight: "700", width: "100%" }}
             onSelect={handleSelectMenu}
           >
+            <Menu.Item disabled style={{ cursor: "pointer" }}>
+              <img src={logo} alt="" style={{ width: 50, height: 50 }} />
+            </Menu.Item>
             <Menu.Item key="/">Trang chủ</Menu.Item>
             {/* <Menu.Item key="/about">Về tôi</Menu.Item> */}
             {/* <Menu.Item key="/news">Tin tức</Menu.Item> */}
             {admin ? <Menu.Item key="/write_blog">Viết blog</Menu.Item> : null}
             {isLogin === false ? (
-              <Menu.Item style={{ float: "right" }} key="/login">
+              <Menu.Item className="login" key="/login">
                 Đăng nhập
               </Menu.Item>
             ) : (
-              <Menu.Item style={{ float: "right" }} onClick={handleLogout}>
+              <Menu.Item className="login" style={{ float: "right" }} onClick={handleLogout}>
                 Đăng xuất
               </Menu.Item>
             )}
             {/* <Menu.Item style={{ float: "right" }}>
               <UserOutlined />
             </Menu.Item> */}
-            <Menu.Item disabled style={{ float: "right" }}>
+            <Menu.Item disabled className="language">
               <Dropdown
                 overlay={() => {
                   return (
@@ -136,6 +136,7 @@ function MainLayout({ children, admin }) {
             style={{ lineHeight: "64px", fontWeight: "700", width: "100%" }}
           >
             <Menu.Item
+              className="button-toggle"
               onClick={
                 () =>
                   openSidebar === true
@@ -154,6 +155,23 @@ function MainLayout({ children, admin }) {
         <div className="site-layout-content">{children}</div>
       </Content>
       <Overplay openSidebar={openSidebar} />
+      <div className="affix">
+        <SettingOutlined />
+        <ul className="chibi-icon">
+          <li
+            onClick={() =>
+              theme === "light"
+                ? dispatch(actionUI.CHANGE_THEME("dark"))
+                : dispatch(actionUI.CHANGE_THEME("light"))
+            }
+          >
+            <EyeOutlined />
+          </li>
+          <li onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "smooth" })}>
+            <CaretUpOutlined />
+          </li>
+        </ul>
+      </div>
     </Layout>
   );
 }
