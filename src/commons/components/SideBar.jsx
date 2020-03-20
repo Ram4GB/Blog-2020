@@ -10,6 +10,7 @@ import {
 } from "@ant-design/icons";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router";
 import logo from "../../logo.svg";
 import * as actionSagaUser from "../../modules/users/actions";
 import { MODULE_NAME as MODULE_USER } from "../../modules/users/models";
@@ -17,6 +18,7 @@ import { MODULE_NAME as MODULE_USER } from "../../modules/users/models";
 export default function SideBar({ openSidebar, admin }) {
   const dispatch = useDispatch();
   const isLogin = useSelector(state => state[MODULE_USER].isLogin);
+  const url = useLocation();
 
   const handleSelect = value => {
     dispatch(actionSagaUser.redirect(value.key));
@@ -28,7 +30,12 @@ export default function SideBar({ openSidebar, admin }) {
 
   return (
     <nav className={`navbar ${openSidebar ? "active" : ""}`}>
-      <Menu onSelect={handleSelect} defaultSelectedKeys={["/"]} theme="dark" className="navbar-nav">
+      <Menu
+        onSelect={handleSelect}
+        selectedKeys={[url.pathname]}
+        theme="dark"
+        className="navbar-nav"
+      >
         <Menu.Item disabled style={{ cursor: "pointer" }} className="nav-item logo">
           <img style={{ width: 50, height: 50, margin: "auto" }} src={logo} alt="" />
         </Menu.Item>

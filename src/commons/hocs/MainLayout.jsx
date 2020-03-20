@@ -50,10 +50,6 @@ function MainLayout({ children, admin }) {
     if (currentURL) history.push(`${currentURL}`);
   }, [currentURL, history]);
 
-  useEffect(() => {
-    setDefaultKeyMenu(location.pathname);
-  }, [location.pathname]);
-
   const handleLogout = () => {
     dispatch(actionSagaUser.logout());
   };
@@ -69,7 +65,7 @@ function MainLayout({ children, admin }) {
         <MediaQuery minWidth={breakpoint}>
           <Menu
             mode="horizontal"
-            defaultSelectedKeys={[defaultKeyMenu]}
+            selectedKeys={[defaultKeyMenu]}
             style={{ lineHeight: "64px", fontWeight: "700", width: "100%" }}
             onSelect={handleSelectMenu}
           >
