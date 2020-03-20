@@ -2,8 +2,8 @@ import firebase from "firebase";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDEU4OP3Cdh9wrNSknAt_EETYfTH7iqTNo",
-  // authDomain: "quickstart-1560819438357.firebaseapp.com",
-  authDomain: "naughty-dijkstra-e87cca.netlify.com",
+  authDomain: "quickstart-1560819438357.firebaseapp.com",
+  // authDomain: "naughty-dijkstra-e87cca.netlify.com",
   databaseURL: "https://quickstart-1560819438357.firebaseio.com",
   projectId: "quickstart-1560819438357",
   storageBucket: "quickstart-1560819438357.appspot.com",

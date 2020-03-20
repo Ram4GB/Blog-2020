@@ -14,7 +14,7 @@ import logo from "../../logo.svg";
 import * as actionSagaUser from "../../modules/users/actions";
 import { MODULE_NAME as MODULE_USER } from "../../modules/users/models";
 
-export default function SideBar({ openMenu }) {
+export default function SideBar({ openSidebar }) {
   const dispatch = useDispatch();
   const user = useSelector(state => state[MODULE_USER].user);
   const isLogin = useSelector(state => state[MODULE_USER].isLogin);
@@ -28,7 +28,7 @@ export default function SideBar({ openMenu }) {
   };
 
   return (
-    <nav className={`navbar ${openMenu ? "active" : ""}`}>
+    <nav className={`navbar ${openSidebar ? "active" : ""}`}>
       <Menu onSelect={handleSelect} defaultSelectedKeys={["/"]} theme="dark" className="navbar-nav">
         <Menu.Item className="nav-item logo">
           <img style={{ width: 50, height: 50, margin: "auto" }} src={logo} alt="" />
@@ -44,12 +44,12 @@ export default function SideBar({ openMenu }) {
           </Menu.Item>
         ) : null}
         {isLogin === false ? (
-          <Menu.Item style={{ float: "right" }} key="/login">
+          <Menu.Item style={{ float: "right" }} key="/login" className="nav-item">
             <SettingOutlined />
             <span className="nav-text">Đăng nhập</span>
           </Menu.Item>
         ) : (
-          <Menu.Item style={{ float: "right" }} onClick={handleLogout}>
+          <Menu.Item style={{ float: "right" }} onClick={handleLogout} className="nav-item">
             <SettingOutlined />
             <span className="nav-text">Đăng xuất</span>
           </Menu.Item>
@@ -76,9 +76,9 @@ export default function SideBar({ openMenu }) {
 }
 
 SideBar.propTypes = {
-  openMenu: PropTypes.bool.isRequired
+  openSidebar: PropTypes.bool.isRequired
 };
 
 SideBar.defaultPropTypes = {
-  openMenu: false
+  openSidebar: false
 };

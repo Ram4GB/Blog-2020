@@ -10,6 +10,8 @@ import logo from "../../logo.svg";
 import { MODULE_NAME as MODULE_UI } from "../../modules/ui/models";
 import { MODULE_NAME as MODULE_USER } from "../../modules/users/models";
 import * as actionSagaUser from "../../modules/users/actions";
+import * as actionUI from "../../modules/ui/reducers";
+import Overplay from "../components/Overplay";
 
 const breakpoint = 760;
 const { Header, Content } = Layout;
@@ -18,11 +20,11 @@ function MainLayout({ children, admin }) {
   const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
+  const [defaultKeyMenu, setDefaultKeyMenu] = useState("/");
   const error = useSelector(state => state[MODULE_UI].error);
   const currentURL = useSelector(state => state[MODULE_UI].currentURL);
   const success = useSelector(state => state[MODULE_UI].success);
-  const [openMenu, setOpenMenu] = useState(false);
-  const [defaultKeyMenu, setDefaultKeyMenu] = useState("/");
+  const openSidebar = useSelector(state => state[MODULE_UI].openSideBar);
   const isLogin = useSelector(state => state[MODULE_USER].isLogin);
 
   const handleSelectMenu = link => {
@@ -126,7 +128,7 @@ function MainLayout({ children, admin }) {
           </Menu>
         </MediaQuery>
         <MediaQuery maxWidth={breakpoint}>
-          <SideBar openMenu={openMenu} />
+          <SideBar openSidebar={openSidebar} />
           <Menu
             theme="dark"
             mode="horizontal"
@@ -134,7 +136,13 @@ function MainLayout({ children, admin }) {
             style={{ lineHeight: "64px", fontWeight: "700", width: "100%" }}
           >
             <Menu.Item
-              onClick={() => (openMenu ? setOpenMenu(false) : setOpenMenu(true))}
+              onClick={
+                () =>
+                  openSidebar === true
+                    ? dispatch(actionUI.CLOSE_SIDEBAR())
+                    : dispatch(actionUI.OPEN_SIDEBAR())
+                // eslint-disable-next-line react/jsx-curly-newline
+              }
               style={{ float: "right" }}
             >
               <MenuOutlined />
@@ -145,6 +153,7 @@ function MainLayout({ children, admin }) {
       <Content style={{ backgroundColor: "#fff" }}>
         <div className="site-layout-content">{children}</div>
       </Content>
+      <Overplay openSidebar={openSidebar} />
     </Layout>
   );
 }
