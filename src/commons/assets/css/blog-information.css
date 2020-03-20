@@ -1,10 +1,15 @@
+.blog-information {
+    font-family: 'Open Sans', sans-serif;;
+}
+
 .blog-information .title{
     text-align: center;
     font-weight: bold;
   }
   
 .blog-information p{
-    line-height: 1.5;
+    line-height: 1.8    ;
+    font-size: 1.3rem;
 }
 
 .blog-information h1 strong::before{
@@ -29,9 +34,39 @@
     font-weight: bold;
 }
 
-@media only screen and (max-width: 700px) {
-.blog-information{
-    font-size: 0.9rem;
+.blog-information blockquote{
+    background-color: #ffffcc;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
 }
+
+.blog-information blockquote p{
+    color: #111111 !important;
+}
+
+.blog-information img {
+    display: block;
+    margin: auto;
+}
+
+/* .blog-information p{
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.5;
+} */
+
+@media only screen and (max-width: 700px) {
+    .blog-information{
+        font-size: 0.9rem;
+    }
+
+    .blog-information p{
+        font-size: 1.2rem;
+    }
+
+    .blog-information img{
+        width: 90%;
+    }
 }
 
