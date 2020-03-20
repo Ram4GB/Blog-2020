@@ -1,19 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { MODULE_NAME } from "./models";
 
+const uid = ["DLfYXSeopuQQWqLsitrPUgDR8Ri2", "xCCUSbJAofc2AsIFPhjxJjAKP6f1"];
+
 const reducers = createSlice({
   name: [MODULE_NAME],
   initialState: {
     user: null,
-    isLogin: false
+    isLogin: false,
+    isAdmin: false
   },
   reducers: {
     LOGIN_SUCCESS: (state, action) => ({
+      ...state,
       user: action.payload,
-      isLogin: true
+      isLogin: true,
+      isAdmin: uid.indexOf(action.payload.uid) !== -1
     }),
     LOGIN_FAIL: state => state,
-    LOG_OUT_SUCCESS: () => ({
+    LOG_OUT_SUCCESS: state => ({
+      ...state,
       user: null,
       isLogin: false
     }),

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Layout, Menu, Dropdown, notification } from "antd";
+import { Layout, Menu, Dropdown, notification, BackTop } from "antd";
 import PropTypes from "prop-types";
 import { useHistory, useLocation } from "react-router";
 import MediaQuery from "react-responsive";
-import { MenuOutlined, SettingOutlined, EyeOutlined, CaretUpOutlined } from "@ant-design/icons";
+import { MenuOutlined, SettingOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import SideBar from "../components/SideBar";
 import logo from "../../logo.svg";
@@ -128,7 +128,7 @@ function MainLayout({ children, admin }) {
           </Menu>
         </MediaQuery>
         <MediaQuery maxWidth={breakpoint}>
-          <SideBar openSidebar={openSidebar} />
+          <SideBar admin openSidebar={openSidebar} />
           <Menu
             theme="dark"
             mode="horizontal"
@@ -155,23 +155,17 @@ function MainLayout({ children, admin }) {
         <div className="site-layout-content">{children}</div>
       </Content>
       <Overplay openSidebar={openSidebar} />
-      <div className="affix">
+      <div
+        onClick={() =>
+          theme === "light"
+            ? dispatch(actionUI.CHANGE_THEME("dark"))
+            : dispatch(actionUI.CHANGE_THEME("light"))
+        }
+        className="affix"
+      >
         <SettingOutlined />
-        <ul className="chibi-icon">
-          <li
-            onClick={() =>
-              theme === "light"
-                ? dispatch(actionUI.CHANGE_THEME("dark"))
-                : dispatch(actionUI.CHANGE_THEME("light"))
-            }
-          >
-            <EyeOutlined />
-          </li>
-          <li onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "smooth" })}>
-            <CaretUpOutlined />
-          </li>
-        </ul>
       </div>
+      <BackTop />
     </Layout>
   );
 }

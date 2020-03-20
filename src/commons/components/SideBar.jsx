@@ -14,9 +14,8 @@ import logo from "../../logo.svg";
 import * as actionSagaUser from "../../modules/users/actions";
 import { MODULE_NAME as MODULE_USER } from "../../modules/users/models";
 
-export default function SideBar({ openSidebar }) {
+export default function SideBar({ openSidebar, admin }) {
   const dispatch = useDispatch();
-  const user = useSelector(state => state[MODULE_USER].user);
   const isLogin = useSelector(state => state[MODULE_USER].isLogin);
 
   const handleSelect = value => {
@@ -37,7 +36,7 @@ export default function SideBar({ openSidebar }) {
           <HomeOutlined />
           <span className="nav-text">Trang chủ</span>
         </Menu.Item>
-        {user && (user.uid === "" || user.uid === "") ? (
+        {admin ? (
           <Menu.Item key="/write_blog" className="nav-item">
             <SnippetsOutlined />
             <span className="nav-text">Viết Blogs</span>
@@ -76,7 +75,8 @@ export default function SideBar({ openSidebar }) {
 }
 
 SideBar.propTypes = {
-  openSidebar: PropTypes.bool.isRequired
+  openSidebar: PropTypes.bool.isRequired,
+  admin: PropTypes.bool.isRequired
 };
 
 SideBar.defaultPropTypes = {

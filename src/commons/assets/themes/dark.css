@@ -96,8 +96,13 @@
 }
 
 .ant-layout.layout.dark .ant-btn.button-google {
-    color: red;
+    color: #ffffff;
+    background-color: #B23121;
     margin-top: 20px;
+}
+
+.ant-layout.layout.dark .ant-btn:hover.button-google {
+    border: none;
 }
  
 .ant-layout.layout.dark .ant-btn:hover{
@@ -175,4 +180,14 @@
     font-weight: bold;
     border: none;
     margin-bottom: 20px;
+}
+
+.ant-layout.layout.dark .ant-back-top-content {
+    background-color: #111111;
+    color: #111111 !important;
+    border: 2px solid #ffffff;
+}
+
+table, th, td {
+    border: 2px solid rgb(86, 86, 194) !important;
 }

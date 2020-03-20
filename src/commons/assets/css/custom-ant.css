@@ -13,6 +13,7 @@
 
 .ant-layout-content {
     font-family: 'Montserrat', sans-serif;
+    min-height: calc(100vh - 66px) !important;
 }
 
 .form .ant-form-item {
@@ -35,4 +36,24 @@
 
 .ant-menu-vertical .ant-menu-item{
     margin-top: 0 !important;
+}
+
+.ant-back-top {
+    bottom: 95px !important;
+    right: 60px !important;
+    
+}
+
+.ant-back-top-content {
+    width: 50px !important ;
+    height: 50px !important;
+    border-radius: 50% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ant-notification-notice-message {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: bold;
 }
