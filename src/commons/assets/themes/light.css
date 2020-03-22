@@ -140,3 +140,27 @@ th,
 td {
   border: 2px solid #111111 !important;
 }
+
+.ant-layout.layout.light .profile .avata {
+  width: 150px !important;
+  height: 150px !important;
+  background-repeat: no-repeat;
+  background-size: cover !important;
+  background-position: center;
+  border-radius: 50%;
+  margin: 30px auto;
+}
+
+.ant-layout.layout.light .profile .information {
+  font-family: "Open Sans Condensed", sans-serif;
+  color: #111111;
+  padding-left: 20px;
+  font-size: 1.3rem;
+  overflow: hidden;
+}
+
+.ant-layout.layout.light .profile .information label {
+  color: #111111;
+  margin-right: 10px;
+  font-weight: bold;
+}

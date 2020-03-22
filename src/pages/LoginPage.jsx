@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Input, Button } from "antd";
-import { UserOutlined, CodeFilled, GoogleOutlined } from "@ant-design/icons";
+import { UserOutlined, CodeFilled, GoogleOutlined, FacebookOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router";
 import * as actions from "../modules/users/actions";
 import { MODULE_NAME } from "../modules/users/models";
@@ -16,6 +16,10 @@ export default function Loginpage() {
 
   const LoginWithGoogle = () => {
     dispatch(actions.loginWithGoogle());
+  };
+
+  const LoginWithFacebook = () => {
+    dispatch(actions.loginWithFacebook());
   };
 
   useEffect(() => {
@@ -72,9 +76,9 @@ export default function Loginpage() {
           <Button size="large" className="button-google" onClick={LoginWithGoogle}>
             <GoogleOutlined />
           </Button>
-          {/* <Button size="large" className="button-facebook" onClick={LoginWithFacebook}>
+          <Button disabled size="large" className="button-facebook" onClick={LoginWithFacebook}>
             <FacebookOutlined />
-          </Button> */}
+          </Button>
         </Form.Item>
       </Form>
     </div>

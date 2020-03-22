@@ -94,3 +94,13 @@
   font-weight: bold;
   margin-bottom: 10px !important;
 }
+
+.ant-modal-confirm-title {
+  font-weight: bold !important;
+  font-size: 1.6rem !important;
+}
+
+.ant-modal-confirm-body p {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 1.3rem !important;
+}

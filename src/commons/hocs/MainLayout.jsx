@@ -171,11 +171,11 @@ function MainLayout({ children, admin }) {
 
             {!isLogin ? (
               <Menu.Item key="/login">
-                <LogoutOutlined />
+                <LoginOutlined />
               </Menu.Item>
             ) : (
               <Menu.Item key="/logout" onClick={handleLogout}>
-                <LoginOutlined />
+                <LogoutOutlined />
               </Menu.Item>
             )}
           </Menu>
