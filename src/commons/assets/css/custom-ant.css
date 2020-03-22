@@ -1,69 +1,96 @@
 .ant-layout-header {
-    height: auto !important;
+  height: auto !important;
 }
 
 .ant-menu-vertical .ant-menu-item {
-    height: auto !important;
-    overflow: auto;
+  height: auto !important;
+  overflow: auto;
 }
 
-.ant-layout-header{
-    font-family: 'Open Sans Condensed', sans-serif;
+.ant-layout-header {
+  font-family: "Open Sans Condensed", sans-serif;
 }
 
 .ant-layout-content {
-    font-family: 'Montserrat', sans-serif;
-    min-height: calc(100vh - 66px) !important;
+  font-family: "Montserrat", sans-serif;
+  min-height: calc(100vh - 66px) !important;
+}
+
+@media only screen and (max-width: 760px) {
+  .ant-layout-content {
+    margin-top: 65px;
+  }
 }
 
 .form .ant-form-item {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-.form .ant-form-item-label{
-    text-align: left;
+.form .ant-form-item-label {
+  text-align: left;
 }
 
-.form .mde-text{
-    resize: none !important;
+.form .mde-text {
+  resize: none !important;
 }
 
 .ant-menu-vertical .ant-menu-item.logo {
-    height: 64px !important;
-    margin: 0 !important;
+  height: 64px !important;
+  margin: 0 !important;
 }
 
-.ant-menu-vertical .ant-menu-item{
-    margin-top: 0 !important;
+.ant-menu-vertical .ant-menu-item {
+  margin-top: 0 !important;
 }
 
 .ant-back-top {
-    bottom: 95px !important;
-    right: 60px !important;
-    
+  bottom: 95px !important;
+  right: 20px !important;
 }
 
 .ant-back-top-content {
-    width: 50px !important ;
-    height: 50px !important;
-    border-radius: 50% !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 50px !important ;
+  height: 50px !important;
+  border-radius: 50% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .ant-notification-notice-message {
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-weight: bold;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: bold;
 }
 
 .btn-back {
-    background-color: orange !important;
-    color: #ffffff;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-weight: bold !important;
-    color: #ffffff !important;
-    border: none !important;
-    outline: none !important;
+  background-color: orange !important;
+  color: #ffffff;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: bold !important;
+  color: #ffffff !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.pre,
+.next {
+  background-color: orange !important;
+  color: #ffffff;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: bold !important;
+  color: #ffffff !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.ant-menu-item .anticon {
+  font-size: 1.3rem !important;
+}
+
+.ant-alert {
+  padding: 30px !important;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px !important;
 }

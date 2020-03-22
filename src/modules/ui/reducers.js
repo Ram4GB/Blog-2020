@@ -15,12 +15,17 @@ const reducers = createSlice({
     previousURL: "/",
     success: null,
     openSideBar: false,
-    theme // may you have load light first
+    theme, // may you have load light first,
+    infor: null
   },
   reducers: {
     ERROR_FIREBASE: (state, action) => ({
       ...state,
       error: action.payload.message
+    }),
+    INFOR_FIREBASE: (state, action) => ({
+      ...state,
+      infor: action.payload.message
     }),
     SUCCESS_MESSAGE: (state, action) => ({
       ...state,
@@ -45,6 +50,10 @@ const reducers = createSlice({
       ...state,
       previousURL: state.previousURL,
       currentURL: action.payload
+    }),
+    CLEAR_INFO: state => ({
+      ...state,
+      infor: null
     })
   }
 });
@@ -55,7 +64,9 @@ export const {
   OPEN_SIDEBAR,
   CLOSE_SIDEBAR,
   CHANGE_THEME,
-  SET_PREVIOUS_URL
+  SET_PREVIOUS_URL,
+  INFOR_FIREBASE,
+  CLEAR_INFO
 } = reducers.actions;
 
 export default reducers;

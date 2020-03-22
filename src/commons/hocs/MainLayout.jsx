@@ -1,9 +1,16 @@
 import React, { useEffect } from "react";
-import { Layout, Menu, Dropdown, notification, BackTop } from "antd";
+import { Layout, Menu, Dropdown, notification, BackTop, Modal } from "antd";
 import PropTypes from "prop-types";
 import { useHistory, useLocation } from "react-router";
 import MediaQuery from "react-responsive";
-import { MenuOutlined, SettingOutlined } from "@ant-design/icons";
+import {
+  SettingOutlined,
+  HomeOutlined,
+  SnippetsOutlined,
+  LogoutOutlined,
+  LoginOutlined,
+  UserOutlined
+} from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import SideBar from "../components/SideBar";
 import logo from "../../logo.svg";
@@ -21,6 +28,7 @@ function MainLayout({ children, admin }) {
   const dispatch = useDispatch();
   const error = useSelector(state => state[MODULE_UI].error);
   const success = useSelector(state => state[MODULE_UI].success);
+  const infor = useSelector(state => state[MODULE_UI].infor);
   const openSidebar = useSelector(state => state[MODULE_UI].openSideBar);
   const isLogin = useSelector(state => state[MODULE_USER].isLogin);
   const theme = useSelector(state => state[MODULE_UI].theme);
@@ -44,9 +52,28 @@ function MainLayout({ children, admin }) {
       });
   }, [success]);
 
+  useEffect(() => {
+    if (infor) {
+      notification.info({
+        message: infor
+      });
+      setTimeout(() => {
+        dispatch(actionUI.CLEAR_INFO());
+      }, 100);
+    }
+  }, [infor, dispatch]);
+
   const handleLogout = () => {
-    dispatch(actionSagaUser.logout());
-    history.go("/");
+    const { confirm } = Modal;
+
+    confirm({
+      title: "Warning",
+      content: <p>Are you sure to logout?</p>,
+      onOk() {
+        dispatch(actionSagaUser.logout());
+        history.go("/");
+      }
+    });
   };
 
   return (
@@ -121,24 +148,36 @@ function MainLayout({ children, admin }) {
         <MediaQuery maxWidth={breakpoint}>
           <SideBar admin={admin} openSidebar={openSidebar} />
           <Menu
+            className="small-menu"
             theme="dark"
             mode="horizontal"
             selectedKeys={[url.pathname]}
             style={{ lineHeight: "64px", fontWeight: "700", width: "100%" }}
+            onSelect={value => (value.key !== "/logout" ? history.push(value.key) : "")}
           >
-            <Menu.Item
-              className="button-toggle"
-              onClick={
-                () =>
-                  openSidebar === true
-                    ? dispatch(actionUI.CLOSE_SIDEBAR())
-                    : dispatch(actionUI.OPEN_SIDEBAR())
-                // eslint-disable-next-line react/jsx-curly-newline
-              }
-              style={{ float: "right" }}
-            >
-              <MenuOutlined />
+            <Menu.Item key="/">
+              <HomeOutlined />
             </Menu.Item>
+
+            {admin ? (
+              <Menu.Item key="/write_blog">
+                <SnippetsOutlined />
+              </Menu.Item>
+            ) : null}
+
+            <Menu.Item key="profile">
+              <UserOutlined />
+            </Menu.Item>
+
+            {!isLogin ? (
+              <Menu.Item key="/login">
+                <LogoutOutlined />
+              </Menu.Item>
+            ) : (
+              <Menu.Item key="/logout" onClick={handleLogout}>
+                <LoginOutlined />
+              </Menu.Item>
+            )}
           </Menu>
         </MediaQuery>
       </Header>

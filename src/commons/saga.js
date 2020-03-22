@@ -82,6 +82,32 @@ export function* getAllCategorySaga(action) {
   else yield put(actionsUI.ERROR_FIREBASE({ message: "No category founded" }));
 }
 
+export function* nextPage(action) {
+  try {
+    const { lastSnapShot } = action.payload;
+    if (!lastSnapShot) yield put(actionsUI.INFOR_FIREBASE({ message: "Hết rồi !!!" }));
+    else {
+      const result = yield call(getDataCollects, "blogs", lastSnapShot, null);
+      if (result) {
+        if (result.array.length !== 0) yield put(actionsBlog.REDUCER_LOAD_BLOG_SUCCESS(result));
+        else {
+          yield put(actionsUI.INFOR_FIREBASE({ message: "Hết rồi !!!" }));
+          put(actionsBlog.REDUCER_LOAD_BLOG_SUCCESS(result));
+        }
+      } else yield put(actionsUI.ERROR_FIREBASE({ message: "LOAD_BLOG_FAIl" }));
+    }
+  } catch (error) {
+    yield put(actionsUI.ERROR_FIREBASE(error));
+  }
+}
+
+export function* previousPage(action) {
+  const result = yield call(getDataCollects, "blogs", null, action.payload);
+  if (result) {
+    yield put(actionsBlog.REDUCER_LOAD_BLOG_SUCCESS(result));
+  } else yield put(actionsUI.ERROR_FIREBASE({ message: "LOAD_BLOG_FAIl" }));
+}
+
 export default function* rootSaga() {
   yield takeEvery(actionsSagaBlog.loadBlog, loadBlog);
   yield takeEvery(actionsSagaBlog.loadCategory, getAllCategorySaga);
@@ -90,4 +116,6 @@ export default function* rootSaga() {
   yield takeEvery(actionsSagaUser.loginWithGoogle, loginWithGoogle);
   yield takeEvery(actionsSagaUser.loginWithGithub, loginWithGithub);
   yield takeEvery(actionsSagaUser.loginWithFacebook, loginWithFacebook);
+  yield takeEvery(actionsSagaBlog.nextPage, nextPage);
+  yield takeEvery(actionsSagaBlog.previousPage, previousPage);
 }

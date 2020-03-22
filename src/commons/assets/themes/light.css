@@ -26,6 +26,7 @@
   margin-top: 0px;
   color: #ffffff;
   height: 66px;
+  border-bottom: 2px solid #333333;
 }
 
 .ant-layout.layout.light .ant-layout-header .ant-menu-item .button-toggle {
