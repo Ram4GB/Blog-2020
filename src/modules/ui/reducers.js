@@ -11,7 +11,8 @@ const reducers = createSlice({
   name: [MODULE_NAME],
   initialState: {
     error: null,
-    currentURL: "",
+    currentURL: window.location.pathname,
+    previousURL: "/",
     success: null,
     openSideBar: false,
     theme // may you have load light first
@@ -20,10 +21,6 @@ const reducers = createSlice({
     ERROR_FIREBASE: (state, action) => ({
       ...state,
       error: action.payload.message
-    }),
-    REDIRECT_URL: (state, action) => ({
-      ...state,
-      currentURL: action.payload
     }),
     SUCCESS_MESSAGE: (state, action) => ({
       ...state,
@@ -43,17 +40,22 @@ const reducers = createSlice({
         ...state,
         theme: action.payload
       };
-    }
+    },
+    SET_PREVIOUS_URL: (state, action) => ({
+      ...state,
+      previousURL: state.previousURL,
+      currentURL: action.payload
+    })
   }
 });
 
 export const {
   ERROR_FIREBASE,
-  REDIRECT_URL,
   SUCCESS_MESSAGE,
   OPEN_SIDEBAR,
   CLOSE_SIDEBAR,
-  CHANGE_THEME
+  CHANGE_THEME,
+  SET_PREVIOUS_URL
 } = reducers.actions;
 
 export default reducers;

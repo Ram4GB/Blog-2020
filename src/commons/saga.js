@@ -8,7 +8,8 @@ import {
   logoutFirebase,
   loginWithGoogleFirebase,
   loginWithFacebookFirebase,
-  loginWithGithubFirebase
+  loginWithGithubFirebase,
+  getAllCategory
 } from "./utils/firebase";
 import * as actionsUser from "../modules/users/reducers";
 import * as actionsUI from "../modules/ui/reducers";
@@ -31,7 +32,6 @@ function* login(action) {
       action.payload.password
     );
     yield put(actionsUser.LOGIN_SUCCESS(result));
-    yield put(actionsUI.REDIRECT_URL("/"));
   } catch (error) {
     yield put(actionsUI.ERROR_FIREBASE(error));
     yield put(actionsUser.LOGIN_FAIL(error));
@@ -41,7 +41,6 @@ function* login(action) {
 function* logout() {
   try {
     yield call(logoutFirebase);
-    yield put(actionsUI.REDIRECT_URL("/"));
     yield put(actionsUI.SUCCESS_MESSAGE("Đăng xuất thành công"));
     yield put(actionsUser.LOG_OUT_SUCCESS());
   } catch (error) {
@@ -53,7 +52,6 @@ function* loginWithGoogle() {
   try {
     const result = yield call(loginWithGoogleFirebase);
     yield put(actionsUser.LOGIN_SUCCESS(result));
-    yield put(actionsUI.REDIRECT_URL("/"));
     yield put(actionsUI.SUCCESS_MESSAGE("Chào mừng bạn tới với blog"));
   } catch (error) {
     yield put(actionsUI.ERROR_FIREBASE(error));
@@ -78,16 +76,18 @@ function* loginWithGithub() {
   }
 }
 
-function* redirect(action) {
-  yield put(actionsUI.REDIRECT_URL(action.payload));
+export function* getAllCategorySaga(action) {
+  const result = yield call(getAllCategory, action.payload);
+  if (result) yield put(actionsBlog.GET_ALL_CATEGORY_SUCCESS(result));
+  else yield put(actionsUI.ERROR_FIREBASE({ message: "No category founded" }));
 }
 
 export default function* rootSaga() {
   yield takeEvery(actionsSagaBlog.loadBlog, loadBlog);
+  yield takeEvery(actionsSagaBlog.loadCategory, getAllCategorySaga);
   yield takeEvery(actionsSagaUser.login, login);
   yield takeEvery(actionsSagaUser.logout, logout);
   yield takeEvery(actionsSagaUser.loginWithGoogle, loginWithGoogle);
   yield takeEvery(actionsSagaUser.loginWithGithub, loginWithGithub);
   yield takeEvery(actionsSagaUser.loginWithFacebook, loginWithFacebook);
-  yield takeEvery(actionsSagaUser.redirect, redirect);
 }

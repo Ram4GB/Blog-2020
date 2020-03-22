@@ -1,12 +1,15 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Form, Input, Button } from "antd";
 import { UserOutlined, CodeFilled, GoogleOutlined } from "@ant-design/icons";
+import { useHistory } from "react-router";
 import * as actions from "../modules/users/actions";
+import { MODULE_NAME } from "../modules/users/models";
 
 export default function Loginpage() {
   const dispatch = useDispatch();
-
+  const isLogin = useSelector(state => state[MODULE_NAME].isLogin);
+  const history = useHistory();
   const handleSubmit = value => {
     dispatch(actions.login(value));
   };
@@ -14,6 +17,10 @@ export default function Loginpage() {
   const LoginWithGoogle = () => {
     dispatch(actions.loginWithGoogle());
   };
+
+  useEffect(() => {
+    if (isLogin) history.push("/");
+  }, [isLogin, history]);
 
   return (
     <div className="container">
@@ -65,6 +72,9 @@ export default function Loginpage() {
           <Button size="large" className="button-google" onClick={LoginWithGoogle}>
             <GoogleOutlined />
           </Button>
+          {/* <Button size="large" className="button-facebook" onClick={LoginWithFacebook}>
+            <FacebookOutlined />
+          </Button> */}
         </Form.Item>
       </Form>
     </div>

@@ -57,3 +57,13 @@
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: bold;
 }
+
+.btn-back {
+    background-color: orange !important;
+    color: #ffffff;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: bold !important;
+    color: #ffffff !important;
+    border: none !important;
+    outline: none !important;
+}

@@ -1,9 +1,10 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDEU4OP3Cdh9wrNSknAt_EETYfTH7iqTNo",
   authDomain: "quickstart-1560819438357.firebaseapp.com",
-  // authDomain: "naughty-dijkstra-e87cca.netlify.com",
   databaseURL: "https://quickstart-1560819438357.firebaseio.com",
   projectId: "quickstart-1560819438357",
   storageBucket: "quickstart-1560819438357.appspot.com",
@@ -13,9 +14,6 @@ const firebaseConfig = {
 };
 
 const googleProvider = new firebase.auth.GoogleAuthProvider();
-
-// Custom later
-// googleProvider.addScope("https://www.googleapis.com/auth/contacts.readonly");
 
 const facebookProvider = new firebase.auth.FacebookAuthProvider();
 
@@ -29,6 +27,33 @@ export const getDataCollects = async collectionName => {
     const array = [];
     data.forEach(element => {
       return array.push({ ...element.data(), id: element.id });
+    });
+    return array;
+  }
+  return null;
+};
+
+export const getDataCollectsByCategory = async (collectionName, categoryArray) => {
+  const data = await database
+    .collection(collectionName)
+    .where("category", "array-contains-any", categoryArray)
+    .get();
+  if (data) {
+    const array = [];
+    data.forEach(element => {
+      return array.push({ ...element.data(), id: element.id });
+    });
+    return array;
+  }
+  return null;
+};
+
+export const getAllCategory = async collectionName => {
+  const data = await database.collection(collectionName).get();
+  if (data) {
+    const array = [];
+    data.forEach(element => {
+      array.push(element.data());
     });
     return array;
   }
@@ -94,16 +119,7 @@ export const loginWithGoogleFirebase = () => {
 };
 
 export const loginWithFacebookFirebase = () => {
-  firebase
-    .auth()
-    .signInWithRedirect(facebookProvider)
-    .then(result => {
-      if (result) return result;
-      return null;
-    })
-    .catch(error => {
-      return error;
-    });
+  return firebase.auth().signInWithPopup(facebookProvider);
 };
 
 export const loginWithGithubFirebase = () => {

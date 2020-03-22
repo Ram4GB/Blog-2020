@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, Row, Col, Input, notification } from "antd";
+import { Form, Button, Row, Col, Input, notification, Select } from "antd";
 import ReactMarkdown from "react-markdown";
 import ReactMde from "react-mde";
 import "react-mde/lib/styles/css/react-mde-all.css";
-import { useHistory, useParams } from "react-router";
+import { useParams, useHistory } from "react-router";
 import { useForm } from "antd/lib/form/util";
+import { useDispatch, useSelector } from "react-redux";
 import CodeBlock from "../commons/components/CodeBlock";
 import { addBlogs, getBlog, editBlog } from "../commons/utils/firebase";
+import * as actionsSagaBlog from "../modules/blogs/actions";
+import { MODULE_NAME as MODULE_BLOG } from "../modules/blogs/models";
 
 export default function WriteBlogPage() {
   const [input, setInput] = useState("");
   const [form] = useForm();
   const params = useParams();
+  const dispatch = useDispatch();
+  const category = useSelector(state => state[MODULE_BLOG].category);
   const history = useHistory();
 
   useEffect(() => {
@@ -35,19 +40,18 @@ export default function WriteBlogPage() {
     if (!params || !params.id) {
       const author = "ram4gb";
       const date = new Date().toDateString();
-      const category = "coding";
-      await addBlogs("blogs", { ...value, author, date, category: [category] });
+      await addBlogs("blogs", { ...value, author, date });
       notification.success({
         message: "Thêm thành công"
       });
-      history.push("/");
+      history.goBack();
     } else {
       const result = await editBlog("blogs", params.id, { ...value });
       if (result)
         notification.success({
           message: "Chỉnh sửa thành công"
         });
-      history.push("/");
+      history.goBack();
     }
   };
 
@@ -55,13 +59,35 @@ export default function WriteBlogPage() {
     setInput(makedownEditorValue);
   };
 
+  useEffect(() => {
+    dispatch(actionsSagaBlog.loadCategory("category"));
+  }, [dispatch]);
+
+  const renderCategory = () => {
+    return category.map(item => {
+      return (
+        <Select.Option key={`category_${item.name}`} value={item.name}>
+          {item.name}
+        </Select.Option>
+      );
+    });
+  };
+
   return (
     <div className="container-90 blog-editor">
+      <Button onClick={() => history.goBack()} className="btn-back">
+        Quay lại
+      </Button>
       <Row style={{ display: "flex", alignItems: "center" }}>
         <Col className="editor" sm={24} md={24} lg={24}>
           <Form form={form} name="form-blog" className="form" onFinish={handleSubmit}>
             <Form.Item label="Tiêu đề" name="title">
               <Input placeholder="Ghi tiêu đề..." />
+            </Form.Item>
+            <Form.Item label="Mục" name="category">
+              <Select allowClear mode="multiple">
+                {category ? renderCategory() : null}
+              </Select>
             </Form.Item>
             <Form.Item label="Mô tả" name="description">
               <ReactMde minEditorHeight="300px" maxEditorHeight="300px" onChange={handleChange} />
@@ -77,9 +103,6 @@ export default function WriteBlogPage() {
             renderers={{ code: CodeBlock }}
             source={input}
           />
-          {/* <SyntaxHighlighter render language="javascript">
-          123123123
-        </SyntaxHighlighter> */}
         </Col>
       </Row>
     </div>

@@ -1,14 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Tag } from "antd";
-import { useHistory } from "react-router";
-import moment from "moment";
 import ReactMarkdown from "react-markdown";
+import dayjs from "dayjs";
+import { useHistory } from "react-router";
 import CodeBlock from "../../../commons/components/CodeBlock";
 
 export default function BlogItem({ blog }) {
   const history = useHistory();
-
   const renderTag = categories => {
     return categories.map((tag, index) => {
       return (
@@ -24,7 +23,7 @@ export default function BlogItem({ blog }) {
     });
   };
   return (
-    <div className="blog-card">
+    <div onClick={() => history.push(`/${blog.id}/blog`)} className="blog-card">
       {renderTag(blog.category)}
       <h3>{blog.title}</h3>
       <h4>
@@ -35,15 +34,11 @@ export default function BlogItem({ blog }) {
         />
 
         <span className="author">{blog.author}</span>
-        <span className="date">{moment(new Date(blog.date)).format("MMMM Do YYYY")}</span>
+        <span className="date">{dayjs(new Date(blog.date)).format("MMMM D, YYYY")}</span>
         <div className="small-text">
           <ReactMarkdown renderers={{ code: CodeBlock }} source={blog.description} />
         </div>
-        <button
-          type="button"
-          onClick={() => history.push(`/${blog.id}/blog`)}
-          className="read-more"
-        >
+        <button type="button" className="read-more">
           Read more
         </button>
       </h4>

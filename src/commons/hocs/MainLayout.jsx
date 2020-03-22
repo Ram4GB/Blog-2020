@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Layout, Menu, Dropdown, notification, BackTop } from "antd";
 import PropTypes from "prop-types";
 import { useHistory, useLocation } from "react-router";
@@ -18,18 +18,16 @@ const { Header, Content } = Layout;
 
 function MainLayout({ children, admin }) {
   const history = useHistory();
-  const location = useLocation();
   const dispatch = useDispatch();
-  const [defaultKeyMenu, setDefaultKeyMenu] = useState("/");
   const error = useSelector(state => state[MODULE_UI].error);
-  const currentURL = useSelector(state => state[MODULE_UI].currentURL);
   const success = useSelector(state => state[MODULE_UI].success);
   const openSidebar = useSelector(state => state[MODULE_UI].openSideBar);
   const isLogin = useSelector(state => state[MODULE_USER].isLogin);
   const theme = useSelector(state => state[MODULE_UI].theme);
+  const url = useLocation();
 
   const handleSelectMenu = link => {
-    dispatch(actionSagaUser.redirect(link.key));
+    history.push(link.key);
   };
 
   useEffect(() => {
@@ -46,12 +44,9 @@ function MainLayout({ children, admin }) {
       });
   }, [success]);
 
-  useEffect(() => {
-    if (currentURL) history.push(`${currentURL}`);
-  }, [currentURL, history]);
-
   const handleLogout = () => {
     dispatch(actionSagaUser.logout());
+    history.go("/");
   };
 
   return (
@@ -65,7 +60,7 @@ function MainLayout({ children, admin }) {
         <MediaQuery minWidth={breakpoint}>
           <Menu
             mode="horizontal"
-            selectedKeys={[defaultKeyMenu]}
+            selectedKeys={[url.pathname]}
             style={{ lineHeight: "64px", fontWeight: "700", width: "100%" }}
             onSelect={handleSelectMenu}
           >
@@ -81,7 +76,7 @@ function MainLayout({ children, admin }) {
                 Đăng nhập
               </Menu.Item>
             ) : (
-              <Menu.Item className="login" style={{ float: "right" }} onClick={handleLogout}>
+              <Menu.Item key="" className="login" style={{ float: "right" }} onClick={handleLogout}>
                 Đăng xuất
               </Menu.Item>
             )}
@@ -124,11 +119,11 @@ function MainLayout({ children, admin }) {
           </Menu>
         </MediaQuery>
         <MediaQuery maxWidth={breakpoint}>
-          <SideBar admin openSidebar={openSidebar} />
+          <SideBar admin={admin} openSidebar={openSidebar} />
           <Menu
             theme="dark"
             mode="horizontal"
-            defaultSelectedKeys={[defaultKeyMenu]}
+            selectedKeys={[url.pathname]}
             style={{ lineHeight: "64px", fontWeight: "700", width: "100%" }}
           >
             <Menu.Item

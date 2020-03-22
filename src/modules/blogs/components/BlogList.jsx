@@ -8,6 +8,9 @@ export default function BlogList() {
   const blogs = useSelector(state => state[MODULE_TODO].blogs);
   const dispatch = useDispatch();
 
+  // console.log(location);
+  // console.log(queryString.parse(location.search, { arrayFormat: "bracket" }));
+
   useEffect(() => {
     dispatch(actionSaga.loadBlog());
   }, [dispatch]);
@@ -17,5 +20,5 @@ export default function BlogList() {
       return <BlogItem blog={blog} key={blog.id} />;
     });
   };
-  return renderBlogs();
+  return blogs ? renderBlogs() : null;
 }
