@@ -6,12 +6,16 @@ const reducer = createSlice({
   initialState: {
     blogs: [],
     error: null,
-    category: []
+    category: [],
+    firstSnapShot: null,
+    lastSnapShot: null
   },
   reducers: {
     REDUCER_LOAD_BLOG_SUCCESS: (state, action) => ({
       ...state,
-      blogs: action.payload
+      blogs: [...state.blogs, ...action.payload.array],
+      firstSnapShot: action.payload.firstSnapShot,
+      lastSnapShot: action.payload.lastSnapShot
     }),
     REDUCER_LOAD_BLOG_FAIL: (state, action) => ({
       ...state,
@@ -27,7 +31,8 @@ const reducer = createSlice({
 export const {
   REDUCER_LOAD_BLOG_SUCCESS,
   REDUCER_LOAD_BLOG_FAIL,
-  GET_ALL_CATEGORY_SUCCESS
+  GET_ALL_CATEGORY_SUCCESS,
+  SET_PAGE
 } = reducer.actions;
 
 export default reducer;

@@ -7,15 +7,15 @@
 } */
 
 .ant-layout.layout.dark .ant-layout-header {
-  background-color: #111111;
-  border-bottom: 1px solid #111111;
+  background-color: #444444;
+  border-bottom: 2px solid #444444;
 }
 
 /* Menu */
 .ant-layout.layout.dark .ant-layout-header .ant-menu {
   border-bottom: none;
   display: flex;
-  background-color: #111111;
+  background-color: #444444;
 }
 
 .ant-layout.layout.dark .ant-layout-header .login {
@@ -26,6 +26,7 @@
   margin-top: 0px;
   color: #ffffff;
   height: 66px;
+  border-bottom: 2px solid #444444;
 }
 
 .ant-layout.layout.dark .ant-layout-header .ant-menu-item .button-toggle {
@@ -44,6 +45,7 @@
   border-bottom: none;
   background-color: #333333;
   color: #ffffff;
+  border-bottom: 2px solid #ffffff;
 }
 
 .ant-layout.layout.dark .ant-layout-header .ant-menu-horizontal > .ant-menu-item:hover {
@@ -189,4 +191,34 @@ table,
 th,
 td {
   border: 2px solid rgb(86, 86, 194) !important;
+}
+
+.ant-layout.layout.dark .ant-menu-item-disabled,
+.ant-menu-submenu-disabled {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+.ant-layout.layout.dark .profile .avata {
+  width: 150px !important;
+  height: 150px !important;
+  background-repeat: no-repeat;
+  background-size: cover !important;
+  background-position: center;
+  border-radius: 50%;
+  margin: 30px auto;
+}
+
+.ant-layout.layout.dark .profile .information {
+  font-family: "Open Sans Condensed", sans-serif;
+  color: #ffffff;
+  padding-left: 20px;
+  font-size: 1.3rem;
+  overflow: hidden;
+}
+
+.ant-layout.layout.dark .profile .information label {
+  color: #cccccc;
+  margin-right: 10px;
+  font-weight: bold;
 }

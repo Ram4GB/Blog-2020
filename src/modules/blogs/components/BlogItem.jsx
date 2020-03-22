@@ -34,7 +34,7 @@ export default function BlogItem({ blog }) {
         />
 
         <span className="author">{blog.author}</span>
-        <span className="date">{dayjs(new Date(blog.date)).format("MMMM D, YYYY")}</span>
+        <span className="date">{dayjs(new Date(blog.date.toDate())).format("MMMM D, YYYY")}</span>
         <div className="small-text">
           <ReactMarkdown renderers={{ code: CodeBlock }} source={blog.description} />
         </div>

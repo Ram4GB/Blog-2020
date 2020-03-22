@@ -84,7 +84,16 @@ export default function WriteBlogPage() {
             <Form.Item label="Tiêu đề" name="title">
               <Input placeholder="Ghi tiêu đề..." />
             </Form.Item>
-            <Form.Item label="Mục" name="category">
+            <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Mời chọn danh mục"
+                }
+              ]}
+              label="Mục"
+              name="category"
+            >
               <Select allowClear mode="multiple">
                 {category ? renderCategory() : null}
               </Select>
@@ -97,7 +106,7 @@ export default function WriteBlogPage() {
             </Button>
           </Form>
         </Col>
-        <Col className="previewer" sm={24} md={24} lg={24}>
+        <Col className="previewer" lg={24}>
           <ReactMarkdown
             textAreaProps={{ style: { resize: "none" } }}
             renderers={{ code: CodeBlock }}

@@ -21,6 +21,7 @@ export default function BlogInformation() {
       setBlog(result);
     };
     fetchAPI();
+    window.scrollTo(0, 0);
   }, [params.id]);
 
   const handleEdit = () => {
@@ -57,13 +58,16 @@ export default function BlogInformation() {
           <Avatar src="https://live.staticflickr.com/8076/8323936425_137d023a0f.jpg" />
           {blog ? ` ${blog.author}` : ""}
         </p>
-        <p className="date">{blog ? dayjs(blog.date).format("MMMM Do YYYY") : ""}</p>
+        <p className="date">{blog ? dayjs(blog.date.toDate()).format("MMMM D, YYYY") : ""}</p>
         <ReactMarkdown
           textAreaProps={{ style: { resize: "none" } }}
           renderers={{ code: CodeBlock }}
           source={blog ? blog.description : ""}
         />
       </div>
+      <Button onClick={() => history.goBack()} className="btn-back">
+        Quay lại
+      </Button>
     </div>
   );
 }

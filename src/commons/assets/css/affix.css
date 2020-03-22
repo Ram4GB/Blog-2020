@@ -1,40 +1,40 @@
 .affix {
-    position: fixed;
-    bottom: 30px;
-    right: 50px;
-    background-color: #111;
-    color: #ffffff;
-    display: block;
-    padding: 13px 18px;
-    border-radius: 50%;
-    font-family: 'Fira Code', monospace;
+  position: fixed;
+  bottom: 35px;
+  right: 10px;
+  background-color: #111;
+  color: #ffffff;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 50%;
+  font-family: "Fira Code", monospace;
+  border: 2px solid #ffffff;
 }
 
 .chibi-icon {
-    position: absolute;
-    color: #111;
-    bottom: 80%;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    left: -50%;
-    flex-direction: column;
+  position: absolute;
+  color: #111;
+  bottom: 80%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  left: -50%;
+  flex-direction: column;
 }
 
-.chibi-icon  li {
-    transition: 1s;
-    background-color: #111;
-    color: #ffffff;
-    padding: 13px 18px;
-    border-radius: 50%;
-    margin-left: 5px;
-    /* display: none; */
+.chibi-icon li {
+  transition: 1s;
+  background-color: #111;
+  color: #ffffff;
+  padding: 13px 18px;
+  border-radius: 50%;
+  margin-left: 5px;
+  /* display: none; */
 }
 
-.affix:hover .chibi-icon li{
-    display: block;
+.affix:hover .chibi-icon li {
+  display: block;
 }
-

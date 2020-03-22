@@ -20,15 +20,48 @@ const facebookProvider = new firebase.auth.FacebookAuthProvider();
 firebase.initializeApp(firebaseConfig);
 
 const database = firebase.firestore();
+const limit = 4;
 
-export const getDataCollects = async collectionName => {
-  const data = await database.collection(collectionName).get();
+export const getDataCollects = async (collectionName, startAfter) => {
+  let data = [];
+  if (!startAfter)
+    data = await database
+      .collection(collectionName)
+      .orderBy("date", "desc")
+      .limit(limit)
+      .get();
+
+  if (startAfter)
+    data = await database
+      .collection(collectionName)
+      .orderBy("date", "desc")
+      .startAfter(startAfter)
+      .limit(limit)
+      .get();
+
+  // if (endBefore)
+  //   data = await database
+  //     .collection(collectionName)
+  //     .orderBy("date", "desc")
+  //     .endBefore(endBefore)
+  //     .limit(limit)
+  //     .get();
   if (data) {
     const array = [];
+    let firstSnapShot = null;
+    let lastSnapShot = null;
+    let index = 0;
     data.forEach(element => {
-      return array.push({ ...element.data(), id: element.id });
+      if (index === 0) firstSnapShot = element;
+      if (index === limit - 1) lastSnapShot = element;
+      array.push({ ...element.data(), id: element.id });
+      index += 1;
     });
-    return array;
+    return {
+      array,
+      firstSnapShot,
+      lastSnapShot
+    };
   }
   return null;
 };
