@@ -67,8 +67,8 @@ function MainLayout({ children, admin }) {
     const { confirm } = Modal;
 
     confirm({
-      title: "Warning",
-      content: <p>Are you sure to logout?</p>,
+      title: "Cảnh báo",
+      content: <p>Bạn có muốn đăng xuất ra không?</p>,
       onOk() {
         dispatch(actionSagaUser.logout());
         history.go("/");

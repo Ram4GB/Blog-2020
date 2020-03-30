@@ -39,7 +39,7 @@ export default function WriteBlogPage() {
   const handleSubmit = async value => {
     if (!params || !params.id) {
       const author = "ram4gb";
-      const date = new Date().toDateString();
+      const date = new Date();
       await addBlogs("blogs", { ...value, author, date });
       notification.success({
         message: "Thêm thành công"
