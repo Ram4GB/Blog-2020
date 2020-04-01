@@ -44,7 +44,7 @@ export default function WriteBlogPage() {
       notification.success({
         message: "Thêm thành công"
       });
-      history.goBack();
+      window.location.assign("/");
     } else {
       const result = await editBlog("blogs", params.id, { ...value });
       if (result)

@@ -71,7 +71,7 @@ function MainLayout({ children, admin }) {
       content: <p>Bạn có muốn đăng xuất ra không?</p>,
       onOk() {
         dispatch(actionSagaUser.logout());
-        history.go("/");
+        history.push("/");
       }
     });
   };
@@ -165,9 +165,11 @@ function MainLayout({ children, admin }) {
               </Menu.Item>
             ) : null}
 
-            <Menu.Item key="profile">
-              <UserOutlined />
-            </Menu.Item>
+            {isLogin ? (
+              <Menu.Item key="profile">
+                <UserOutlined />
+              </Menu.Item>
+            ) : null}
 
             {!isLogin ? (
               <Menu.Item key="/login">

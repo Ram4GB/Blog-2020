@@ -53,7 +53,7 @@ export const getDataCollects = async (collectionName, startAfter) => {
     let index = 0;
     data.forEach(element => {
       if (index === 0) firstSnapShot = element;
-      if (index === limit - 1) lastSnapShot = element;
+      if (index === data.size - 1) lastSnapShot = element;
       array.push({ ...element.data(), id: element.id });
       index += 1;
     });
