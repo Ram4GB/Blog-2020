@@ -28,6 +28,7 @@ export default function Router() {
             <Route exact path="/:id/blog/edit" component={WriteBlogPage} />
             <Route exact path="/login" component={Loginpage} />
             <Route exact path="/profile" component={UserProfile} />
+            <Route exact path="/about-me" component={AboutMePage} />
             <Route exact path="*" component={NotFoundPage} />
           </Switch>
         </MainLayout>
