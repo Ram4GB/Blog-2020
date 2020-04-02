@@ -9,7 +9,8 @@ import {
   SnippetsOutlined,
   LogoutOutlined,
   LoginOutlined,
-  UserOutlined
+  UserOutlined,
+  WhatsAppOutlined
 } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import SideBar from "../components/SideBar";
@@ -171,6 +172,10 @@ function MainLayout({ children, admin }) {
                 <UserOutlined />
               </Menu.Item>
             ) : null}
+
+            <Menu.Item key="/about-me">
+              <WhatsAppOutlined />
+            </Menu.Item>
 
             {!isLogin ? (
               <Menu.Item key="/login">

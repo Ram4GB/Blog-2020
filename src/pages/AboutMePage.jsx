@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from "react";
 import { Row, Col, Progress, Tooltip, Button } from "antd";
@@ -76,18 +77,21 @@ export default function AboutMePage() {
           </div>
         </Col>
         <Col className="myself" lg={18}>
-          <h3>Mình là dẫn IT</h3>
+          <h3>Mình là dân IT</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue, suscipit a,
-            scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
-            Phasellus pharetra nulla ac diam.
+            Chào các bạn mình tên là Cường. Mình là dân IT. Mình đam mê ngôn ngữ lập trình và rất
+            yêu thích các framework của JS như: ReactJs, VueJs và Angular. Sở thích của mình thường
+            là đọc sách và viết code khi rảnh rỗi.
           </p>
           <p>
-            Quisque semper justo at risus. Donec venenatis, turpis vel hendrerit interdum, dui
-            ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus
-            aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus
-            quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare, ante vitae
-            consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi.
+            Mục đích mình tạo ra web app này là để lưu lại những kinh nghiệm cũng như những bài học
+            mà mình học tập được. Thật sự mình rất vui khi các bạn tìm đến đây. Nếu bạn thấy hay thì
+            hãy liên lạc với mình link facebook bên cạnh.
+          </p>
+          <p>
+            Web app này mình viết bằng ReactJS + Firebase (sử dụng Authencicate để login). Cơ bản là
+            để mình vào viết blog. Nếu bạn có ý kiến gì hay những tính năng mới cho web thì hãy
+            inbox cho mình. Rất vui được cảm bạn. Cảm ơn <span>❤️❤️❤️ 🥂🥂🥂🥂🥂</span>
           </p>
           <h3>Webiste có thể code</h3>
           <Row>
