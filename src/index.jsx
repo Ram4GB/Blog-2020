@@ -10,6 +10,7 @@ import "./commons/assets/css/form-login.css";
 import "./commons/assets/css/overplay.css";
 import "./commons/assets/css/affix.css";
 import "./commons/assets/css/small-menu.css";
+import "./commons/assets/css/about-me.css";
 import "./commons/assets/themes/light.css";
 import "./commons/assets/themes/dark.css";
 import * as serviceWorker from "./serviceWorker";

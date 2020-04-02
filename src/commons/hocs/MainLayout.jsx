@@ -95,6 +95,7 @@ function MainLayout({ children, admin }) {
               <img src={logo} alt="" style={{ width: 50, height: 50 }} />
             </Menu.Item>
             <Menu.Item key="/">Trang chủ</Menu.Item>
+            <Menu.Item key="/about-me">Về tôi</Menu.Item>
             {/* <Menu.Item key="/about">Về tôi</Menu.Item> */}
             {/* <Menu.Item key="/news">Tin tức</Menu.Item> */}
             {admin ? <Menu.Item key="/write_blog">Viết blog</Menu.Item> : null}

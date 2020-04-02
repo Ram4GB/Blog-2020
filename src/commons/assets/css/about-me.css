@@ -1,0 +1,125 @@
+.about-me {
+  font-family: "Open Sans Condensed", sans-serif;
+  letter-spacing: 0.7px;
+}
+
+.about-me .img-author {
+  width: 250px;
+  height: 250px;
+  margin: 20px auto;
+  display: block;
+  border-radius: 50%;
+}
+
+.about-me .group-information .title {
+  font-weight: bold;
+  color: #cccccc;
+  text-transform: uppercase;
+}
+
+.about-me .group-information .infor {
+  color: #ffffff;
+}
+
+.about-me .group-information .row-info {
+  margin-bottom: 20px;
+}
+
+.about-me h3 {
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: rgb(86, 86, 194);
+}
+
+.about-me .group-social {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+}
+
+.about-me .group-social .anticon-facebook {
+  color: #4267b2;
+}
+
+.about-me .group-social .anticon-google {
+  color: #d44638;
+}
+
+.about-me .group-social .anticon-yahoo {
+  color: #720e9e;
+}
+
+.about-me .banner {
+  text-align: center;
+}
+
+.about-me .banner svg {
+  font-size: 2rem;
+  color: #cccccc;
+}
+
+.about-me .banner h4 {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.about-me .myself p {
+  color: #ffffff;
+  line-height: 2.5;
+  letter-spacing: 1px;
+}
+
+.about-me .skill-name {
+  color: #cccccc;
+  letter-spacing: 0.9px;
+}
+
+.about-me .skill-row {
+  margin-bottom: 30px;
+}
+
+.about-me .myself {
+  padding-left: 50px !important;
+}
+
+.about-me .myself h3 {
+  margin-bottom: 20px !important;
+  font-size: 1.5rem;
+}
+
+.ant-progress-text {
+  color: #ffffff !important;
+}
+
+.about-me .project ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-me .project h4 {
+  font-weight: bold;
+  color: rgb(86, 86, 194);
+}
+
+.about-me .project ul h4::before {
+  content: "📢  ";
+  display: inline-block;
+}
+
+.about-me .project a {
+  color: #ffffff;
+  font-weight: bolder;
+}
+
+.about-me .project a::after {
+  content: "🛠️";
+}
+
+@media only screen and (max-width: 992px) {
+  .about-me .myself {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    margin-top: 30px;
+  }
+}

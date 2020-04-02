@@ -27,7 +27,7 @@ export default function Loginpage() {
   }, [isLogin, history]);
 
   return (
-    <div className="container">
+    <div className="container login-form">
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <Form autoComplete="off" onFinish={handleSubmit} className="form-login" layout="vertical">
         <Form.Item

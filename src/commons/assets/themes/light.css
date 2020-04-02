@@ -164,3 +164,31 @@ td {
   margin-right: 10px;
   font-weight: bold;
 }
+
+.ant-layout.layout.light .about-me p {
+  color: #111111 !important;
+}
+
+.ant-layout.layout.light .about-me .group-information .infor {
+  color: #111111;
+}
+
+.ant-layout.layout.light .about-me .skill-name {
+  color: #111111;
+}
+
+.ant-layout.layout.light .about-me .project a {
+  color: #111111;
+}
+
+.ant-layout.layout.light .about-me .group-information .title {
+  color: #333;
+}
+
+.ant-layout.layout.light .about-me .banner h4 {
+  color: #333;
+}
+
+.ant-layout.layout.light .about-me .banner svg {
+  color: #333;
+}

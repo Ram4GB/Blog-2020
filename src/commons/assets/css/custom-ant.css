@@ -82,6 +82,7 @@
   color: #ffffff !important;
   border: none !important;
   outline: none !important;
+  margin: 0px 0px 30px 0px;
 }
 
 .ant-menu-item .anticon {

@@ -54,7 +54,11 @@ export default function BlogInformation() {
           {isAdmin ? <EditFilled onClick={handleEdit} /> : ""}
           <div>{blog ? renderTag(blog.category) : ""}</div>
         </h1>
-        <p className="author">
+        <p
+          style={{ cursor: "pointer" }}
+          onClick={() => history.push("/about-me")}
+          className="author"
+        >
           <Avatar src="https://live.staticflickr.com/8076/8323936425_137d023a0f.jpg" />
           {blog ? ` ${blog.author}` : ""}
         </p>
