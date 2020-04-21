@@ -17,12 +17,6 @@ export default function BlogList() {
     dispatch(actionsSagaBlog.nextPage({ lastSnapShot, firstSnapShot }));
   };
 
-  // const previous = () => {
-  //   dispatch(actionsSagaBlog.previousPage(firstSnapShot));
-  // };
-  // console.log(location);
-  // console.log(queryString.parse(location.search, { arrayFormat: "bracket" }));
-
   useEffect(() => {
     if (blogs.length === 0) dispatch(actionsSagaBlog.loadBlog());
   }, [dispatch, blogs.length]);
@@ -47,9 +41,6 @@ export default function BlogList() {
     <div>
       <div>{blogs ? renderBlogs() : null}</div>
       <div>
-        {/* <Button onClick={previous} style={{ float: "left" }} className="pre">
-          Trang sau
-        </Button> */}
         <Button onClick={next} style={{ float: "right", width: "100%" }} className="next">
           Xem tiếp
         </Button>

@@ -166,14 +166,29 @@ export default function AboutMePage() {
             <h3>Dự án</h3>
             <ul>
               <li className="project-item">
-                <h4>Ram4GB / congnghephanmem-frontend</h4>
+                <h4>
+                  <a
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href="https://github.com/Ram4GB/congnghephanmem-frontend"
+                  >
+                    Ram4GB / congnghephanmem-frontend
+                  </a>
+                </h4>
                 <p>Website bán vé máy bay</p>
                 <p>
                   <span style={{ fontWeight: "bold" }}>Ngôn ngữ :</span> ReactJS
                 </p>
               </li>
               <li className="project-item">
-                <h4>GoogleDriveAPI-Gallery</h4>
+                <h4>
+                  <a
+                    rel="noopener noreferrer"
+                    href="https://github.com/Ram4GB/GoogleDriveAPI-Gallery"
+                  >
+                    GoogleDriveAPI-Gallery
+                  </a>
+                </h4>
                 <p>API để upload file lên gg driver</p>
                 <p>
                   <span style={{ fontWeight: "bold" }}>Ngôn ngữ :</span> Nodejs
@@ -183,7 +198,14 @@ export default function AboutMePage() {
                 </p>
               </li>
               <li className="project-item">
-                <h4>SearchRankK17SGUCNTT</h4>
+                <h4>
+                  <a
+                    rel="noopener noreferrer"
+                    href="https://github.com/Ram4GB/SearchRankK17SGUCNTT"
+                  >
+                    SearchRankK17SGUCNTT
+                  </a>
+                </h4>
                 <p>Website tra cứu điểm khoa CNTT. Crawl và xử lý bằng Nodejs</p>
                 <p>
                   <span style={{ fontWeight: "bold" }}>Ngôn ngữ :</span> Nodejs + Template: EJS

@@ -54,6 +54,14 @@ const reducers = createSlice({
     CLEAR_INFO: state => ({
       ...state,
       infor: null
+    }),
+    CLEAR_ERROR: state => ({
+      ...state,
+      error: ""
+    }),
+    CLEAR_SUCCESS: state => ({
+      ...state,
+      success: ""
     })
   }
 });
@@ -66,7 +74,9 @@ export const {
   CHANGE_THEME,
   SET_PREVIOUS_URL,
   INFOR_FIREBASE,
-  CLEAR_INFO
+  CLEAR_INFO,
+  CLEAR_ERROR,
+  CLEAR_SUCCESS
 } = reducers.actions;
 
 export default reducers;

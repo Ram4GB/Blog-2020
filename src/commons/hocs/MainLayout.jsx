@@ -36,7 +36,7 @@ function MainLayout({ children, admin }) {
   const url = useLocation();
 
   const handleSelectMenu = link => {
-    history.push(link.key);
+    if (link.key !== "/logout") history.push(link.key);
   };
 
   useEffect(() => {
@@ -44,14 +44,20 @@ function MainLayout({ children, admin }) {
       notification.error({
         message: error
       });
-  }, [error]);
+    setTimeout(() => {
+      dispatch(actionUI.CLEAR_ERROR());
+    }, 100);
+  }, [error, dispatch]);
 
   useEffect(() => {
     if (success)
       notification.success({
         message: success
       });
-  }, [success]);
+    setTimeout(() => {
+      dispatch(actionUI.CLEAR_SUCCESS());
+    }, 100);
+  }, [success, dispatch]);
 
   useEffect(() => {
     if (infor) {
@@ -105,7 +111,12 @@ function MainLayout({ children, admin }) {
                 Đăng nhập
               </Menu.Item>
             ) : (
-              <Menu.Item key="" className="login" style={{ float: "right" }} onClick={handleLogout}>
+              <Menu.Item
+                key="/logout"
+                className="login"
+                style={{ float: "right" }}
+                onClick={handleLogout}
+              >
                 Đăng xuất
               </Menu.Item>
             )}
