@@ -1,9 +1,9 @@
 .form-login {
   width: 80%;
-  margin: 20% auto !important;
+  margin: 10px auto !important;
   max-width: 800px;
   border: 1px solid #cccccc;
-  padding: 50px !important;
+  padding: 20px !important;
 }
 
 .form-login .ant-btn.ant-btn-primary {

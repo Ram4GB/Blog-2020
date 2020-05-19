@@ -32,21 +32,27 @@
 }
 
 .about-me .group-social {
-  display: flex;
   justify-content: space-between;
   font-size: 1.5rem;
 }
 
 .about-me .group-social .anticon-facebook {
   color: #4267b2;
+  font-size: 1.2rem;
 }
 
 .about-me .group-social .anticon-google {
   color: #d44638;
+  font-size: 1.2rem;
+}
+
+.about-me .group-social .anticon-github {
+  font-size: 1.2rem;
 }
 
 .about-me .group-social .anticon-yahoo {
   color: #720e9e;
+  font-size: 1.2rem;
 }
 
 .about-me .banner {

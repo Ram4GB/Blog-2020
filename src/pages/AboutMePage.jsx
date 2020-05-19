@@ -64,15 +64,27 @@ export default function AboutMePage() {
           </div>
           <h3>SOCIAL PROFILES</h3>
           <div className="group-social">
-            <FacebookOutlined
+            <Button
               onClick={() => window.open("https://www.facebook.com/le.minhcuong.9638")}
-            />
-            <GithubOutlined onClick={() => window.open("https://github.com/Ram4GB")} />
+              style={{ width: "100%" }}
+            >
+              <FacebookOutlined />
+            </Button>
+            <Button
+              onClick={() => window.open("https://github.com/Ram4GB")}
+              style={{ width: "100%" }}
+            >
+              <GithubOutlined />
+            </Button>
             <Tooltip placement="top" title="minhcuongdeptrai1@gmail.com">
-              <GoogleOutlined />
+              <Button style={{ width: "100%" }}>
+                <GoogleOutlined />
+              </Button>
             </Tooltip>
             <Tooltip placement="top" title="leminhcuong2988@yahoo.com.vn">
-              <YahooOutlined />
+              <Button style={{ width: "100%" }}>
+                <YahooOutlined />
+              </Button>
             </Tooltip>
           </div>
         </Col>
@@ -194,7 +206,8 @@ export default function AboutMePage() {
                   <span style={{ fontWeight: "bold" }}>Ngôn ngữ :</span> Nodejs
                 </p>
                 <p>
-                  <a href="https://gallery-ram4gb.herokuapp.com/lists-in-google-drive">Demo</a>
+                  <a href="https://ram4gb.github.io/Google-drive">Demo web</a> ||{" "}
+                  <a href="https://gallery-ram4gb.herokuapp.com/lists-in-google-drive">Demo api</a>
                 </p>
               </li>
               <li className="project-item">

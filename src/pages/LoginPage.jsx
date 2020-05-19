@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, Alert } from "antd";
 import { UserOutlined, CodeFilled, GoogleOutlined, FacebookOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router";
 import * as actions from "../modules/users/actions";
@@ -30,6 +30,11 @@ export default function Loginpage() {
     <div className="container login-form">
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <Form autoComplete="off" onFinish={handleSubmit} className="form-login" layout="vertical">
+        <Alert
+          showIcon
+          type="info"
+          message="Đăng nhập chỉ dành cho tác giả. Bạn vẫn có thể sử dụng nó. Mình sẽ mở rộng sau này"
+        />
         <Form.Item
           rules={[
             {
