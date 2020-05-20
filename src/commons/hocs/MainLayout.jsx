@@ -13,6 +13,7 @@ import {
   WhatsAppOutlined
 } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 import SideBar from "../components/SideBar";
 import logo from "../../logo.svg";
 import { MODULE_NAME as MODULE_UI } from "../../modules/ui/models";
@@ -34,6 +35,8 @@ function MainLayout({ children, admin }) {
   const isLogin = useSelector(state => state[MODULE_USER].isLogin);
   const theme = useSelector(state => state[MODULE_UI].theme);
   const url = useLocation();
+  const lang = useSelector(state => state[MODULE_UI].lang);
+  const { i18n, t } = useTranslation();
 
   const handleSelectMenu = link => {
     if (link.key !== "/logout") history.push(link.key);
@@ -74,13 +77,20 @@ function MainLayout({ children, admin }) {
     const { confirm } = Modal;
 
     confirm({
-      title: "Cảnh báo",
-      content: <p>Bạn có muốn đăng xuất ra không?</p>,
+      title: t("warning"),
+      content: <p>{t("areYouSureToLogout")}</p>,
       onOk() {
         dispatch(actionSagaUser.logout());
         history.push("/");
-      }
+      },
+      okText: t("ok"),
+      cancelText: t("cancel")
     });
+  };
+
+  const handleSelectLanguage = value => {
+    dispatch(actionUI.SET_LANG(value.key));
+    i18n.changeLanguage(value.key);
   };
 
   return (
@@ -101,14 +111,14 @@ function MainLayout({ children, admin }) {
             <Menu.Item disabled style={{ cursor: "pointer" }}>
               <img src={logo} alt="" style={{ width: 50, height: 50 }} />
             </Menu.Item>
-            <Menu.Item key="/">Trang chủ</Menu.Item>
-            <Menu.Item key="/about-me">Về tôi</Menu.Item>
+            <Menu.Item key="/">{t("homepage")}</Menu.Item>
+            <Menu.Item key="/about-me">{t("aboutMe")}</Menu.Item>
             {/* <Menu.Item key="/about">Về tôi</Menu.Item> */}
             {/* <Menu.Item key="/news">Tin tức</Menu.Item> */}
-            {admin ? <Menu.Item key="/write_blog">Viết blog</Menu.Item> : null}
+            {admin ? <Menu.Item key="/write_blog">{t("writing")}</Menu.Item> : null}
             {isLogin === false ? (
               <Menu.Item className="login" key="/login">
-                Đăng nhập
+                {t("login")}
               </Menu.Item>
             ) : (
               <Menu.Item
@@ -117,7 +127,7 @@ function MainLayout({ children, admin }) {
                 style={{ float: "right" }}
                 onClick={handleLogout}
               >
-                Đăng xuất
+                {t("logout")}
               </Menu.Item>
             )}
             {/* <Menu.Item style={{ float: "right" }}>
@@ -127,16 +137,16 @@ function MainLayout({ children, admin }) {
               <Dropdown
                 overlay={() => {
                   return (
-                    <Menu>
-                      <Menu.Item>
+                    <Menu onClick={handleSelectLanguage}>
+                      <Menu.Item key="vi">
                         <img
                           src="https://codelearnstorage.s3.amazonaws.com/Themes/TheCodeCampPro/Resources-cdn/Images/vn.png"
                           alt=""
                           style={{ width: 20, height: 20, marginRight: 5 }}
                         />
-                        VietNam
+                        Việt nam
                       </Menu.Item>
-                      <Menu.Item>
+                      <Menu.Item key="en">
                         {" "}
                         <img
                           src="https://codelearnstorage.s3.amazonaws.com/Themes/TheCodeCampPro/Resources-cdn/Images/en.png"
@@ -149,11 +159,19 @@ function MainLayout({ children, admin }) {
                   );
                 }}
               >
-                <img
-                  src="https://codelearnstorage.s3.amazonaws.com/Themes/TheCodeCampPro/Resources-cdn/Images/vn.png"
-                  alt=""
-                  style={{ width: 30, height: 30 }}
-                />
+                {lang === "vi" ? (
+                  <img
+                    src="https://codelearnstorage.s3.amazonaws.com/Themes/TheCodeCampPro/Resources-cdn/Images/vn.png"
+                    alt=""
+                    style={{ width: 30, height: 30 }}
+                  />
+                ) : (
+                  <img
+                    src="https://codelearnstorage.s3.amazonaws.com/Themes/TheCodeCampPro/Resources-cdn/Images/en.png"
+                    alt=""
+                    style={{ width: 20, height: 20, marginRight: 5 }}
+                  />
+                )}
               </Dropdown>
             </Menu.Item>
           </Menu>

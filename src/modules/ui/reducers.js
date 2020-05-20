@@ -7,6 +7,10 @@ if (theme) {
   else theme = "light";
 } else theme = "light";
 
+let i18nextLng = localStorage.getItem("i18nextLng");
+if (i18nextLng && ["en", "vi"].findIndex(i => i === i18nextLng) !== -1) i18nextLng = "vi";
+if (!i18nextLng) i18nextLng = "vi";
+
 const reducers = createSlice({
   name: [MODULE_NAME],
   initialState: {
@@ -16,7 +20,8 @@ const reducers = createSlice({
     success: null,
     openSideBar: false,
     theme, // may you have load light first,
-    infor: null
+    infor: null,
+    lang: i18nextLng
   },
   reducers: {
     ERROR_FIREBASE: (state, action) => ({
@@ -62,6 +67,10 @@ const reducers = createSlice({
     CLEAR_SUCCESS: state => ({
       ...state,
       success: ""
+    }),
+    SET_LANG: (state, action) => ({
+      ...state,
+      lang: action.payload
     })
   }
 });
@@ -76,7 +85,8 @@ export const {
   INFOR_FIREBASE,
   CLEAR_INFO,
   CLEAR_ERROR,
-  CLEAR_SUCCESS
+  CLEAR_SUCCESS,
+  SET_LANG
 } = reducers.actions;
 
 export default reducers;

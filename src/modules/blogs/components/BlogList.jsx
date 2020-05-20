@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "antd";
 import Lottie from "react-lottie";
+import { useTranslation } from "react-i18next";
 import * as actionsSagaBlog from "../actions";
 import { MODULE_NAME as MODULE_TODO } from "../models";
 import BlogItem from "./BlogItem";
@@ -12,6 +13,7 @@ export default function BlogList() {
   const dispatch = useDispatch();
   const firstSnapShot = useSelector(state => state[MODULE_TODO].firstSnapShot);
   const lastSnapShot = useSelector(state => state[MODULE_TODO].lastSnapShot);
+  const { t } = useTranslation();
 
   const next = () => {
     dispatch(actionsSagaBlog.nextPage({ lastSnapShot, firstSnapShot }));
@@ -42,7 +44,7 @@ export default function BlogList() {
       <div>{blogs ? renderBlogs() : null}</div>
       <div>
         <Button onClick={next} style={{ float: "right", width: "100%" }} className="next">
-          Xem tiếp
+          {t("loadmore")}
         </Button>
       </div>
     </div>

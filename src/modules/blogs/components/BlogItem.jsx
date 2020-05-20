@@ -4,10 +4,13 @@ import { Tag } from "antd";
 import ReactMarkdown from "react-markdown";
 import dayjs from "dayjs";
 import { useHistory } from "react-router";
+import { useTranslation } from "react-i18next";
 import CodeBlock from "../../../commons/components/CodeBlock";
 
 export default function BlogItem({ blog }) {
   const history = useHistory();
+  const { t } = useTranslation();
+
   const renderTag = categories => {
     return categories.map((tag, index) => {
       return (
@@ -39,7 +42,7 @@ export default function BlogItem({ blog }) {
           <ReactMarkdown renderers={{ code: CodeBlock }} source={blog.description} />
         </div>
         <button type="button" className="read-more">
-          Read more
+          {t("readmore")}
         </button>
       </h4>
     </div>
