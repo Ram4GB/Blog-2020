@@ -7,15 +7,15 @@
 } */
 
 .ant-layout.layout.light .ant-layout-header {
-  background-color: #333333;
-  border-bottom: 1px solid #ffffff;
+  background-color: #ffffff;
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
 }
 
 /* Menu */
 .ant-layout.layout.light .ant-layout-header .ant-menu {
   border-bottom: none;
   display: flex;
-  background-color: #333333;
+  background-color: #ffffff;
 }
 
 .ant-layout.layout.light .ant-layout-header .login {
@@ -24,9 +24,8 @@
 
 .ant-layout.layout.light .ant-layout-header .ant-menu-item {
   margin-top: 0px;
-  color: #ffffff;
+  color: #111111;
   height: 66px;
-  border-bottom: 2px solid #333333;
 }
 
 .ant-layout.layout.light .ant-layout-header .ant-menu-item .button-toggle {
@@ -42,9 +41,8 @@
 }
 
 .ant-layout.layout.light .ant-layout-header .ant-menu-item-selected {
-  border-bottom: none;
-  background-color: #111111;
-  color: #ffffff;
+  border-bottom: 2px solid #333333;
+  color: #111111;
 }
 
 .ant-layout.layout.light .ant-layout-header .ant-menu-horizontal > .ant-menu-item:hover {
@@ -55,7 +53,7 @@
 
 .ant-layout.layout.light .blog-card {
   background-color: #ffffff;
-  border: none;
+  border: 2px solid #777;
 }
 
 .ant-layout.layout.light .blog-card .read-more {
@@ -152,7 +150,7 @@ td {
 }
 
 .ant-layout.layout.light .profile .information {
-  font-family: "Open Sans Condensed", sans-serif;
+  font-family: 'Roboto Slab', serif;
   color: #111111;
   padding-left: 20px;
   font-size: 1.3rem;
