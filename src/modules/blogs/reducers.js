@@ -8,14 +8,14 @@ const reducer = createSlice({
     error: null,
     category: [],
     firstSnapShot: null,
-    lastSnapShot: null
+    lastSnapShot: null,
+    query: null
   },
   reducers: {
     REDUCER_LOAD_BLOG_SUCCESS: (state, action) => ({
       ...state,
-      blogs: [...state.blogs, ...action.payload.array],
-      firstSnapShot: action.payload.firstSnapShot,
-      lastSnapShot: action.payload.lastSnapShot
+      blogs: [...state.blogs, ...action.payload.data],
+      query: action.payload.query
     }),
     REDUCER_LOAD_BLOG_FAIL: (state, action) => ({
       ...state,

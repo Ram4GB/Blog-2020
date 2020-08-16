@@ -51,7 +51,7 @@
 /* Blog card */
 
 .ant-layout.layout.dark .blog-card {
-  background-color: #111111;
+  background-color: #242526;
   border: none;
 }
 
@@ -72,8 +72,8 @@
 }
 
 .ant-layout.layout.dark .blog-card .read-more {
-  background-color: #111111;
-  color: green;
+  background: none;
+  color: orange;
   font-weight: bold;
 }
 
@@ -217,4 +217,16 @@ td {
   color: #cccccc;
   margin-right: 10px;
   font-weight: bold;
+}
+
+.ant-layout.layout.dark .blog-card .author {
+  color: #ffffff;
+}
+
+.ant-layout.layout.dark .blog-card .author:hover {
+  color: #49b882;
+}
+
+.ant-layout.layout.dark .blog-card .date {
+  color: #ffffff;
 }

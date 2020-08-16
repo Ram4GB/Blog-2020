@@ -22,48 +22,36 @@ firebase.initializeApp(firebaseConfig);
 const database = firebase.firestore();
 const limit = 4;
 
-export const getDataCollects = async (collectionName, startAfter) => {
-  let data = [];
-  if (!startAfter)
-    data = await database
+export const getDataCollects = async collectionName => {
+  const query = database
+    .collection(collectionName)
+    .orderBy("date", "desc")
+    .limit(limit);
+  const data = (await query.get()).docs.map(s => ({ ...s.data(), id: s.id }));
+  return {
+    query,
+    data
+  };
+};
+
+export const getNextDataCollects = async (collectionName, query) => {
+  return query.get().then(async documentSnapshots => {
+    // Get the last visible document
+    const lastVisible = documentSnapshots.docs[documentSnapshots.docs.length - 1];
+
+    // Construct a new query starting at this document,
+    // get the next 25 cities.
+    const next = database
       .collection(collectionName)
       .orderBy("date", "desc")
       .limit(limit)
-      .get();
-
-  if (startAfter)
-    data = await database
-      .collection(collectionName)
-      .orderBy("date", "desc")
-      .startAfter(startAfter)
-      .limit(limit)
-      .get();
-
-  // if (endBefore)
-  //   data = await database
-  //     .collection(collectionName)
-  //     .orderBy("date", "desc")
-  //     .endBefore(endBefore)
-  //     .limit(limit)
-  //     .get();
-  if (data) {
-    const array = [];
-    let firstSnapShot = null;
-    let lastSnapShot = null;
-    let index = 0;
-    data.forEach(element => {
-      if (index === 0) firstSnapShot = element;
-      if (index === data.size - 1) lastSnapShot = element;
-      array.push({ ...element.data(), id: element.id });
-      index += 1;
-    });
+      .startAfter(lastVisible);
+    const data = (await next.get()).docs.map(s => ({ ...s.data(), id: s.id }));
     return {
-      array,
-      firstSnapShot,
-      lastSnapShot
+      query: next,
+      data
     };
-  }
-  return null;
+  });
 };
 
 export const getDataCollectsByCategory = async (collectionName, categoryArray) => {

@@ -9,7 +9,8 @@ import {
   loginWithGoogleFirebase,
   loginWithFacebookFirebase,
   loginWithGithubFirebase,
-  getAllCategory
+  getAllCategory,
+  getNextDataCollects
 } from "./utils/firebase";
 import * as actionsUser from "../modules/users/reducers";
 import * as actionsUI from "../modules/ui/reducers";
@@ -84,28 +85,16 @@ export function* getAllCategorySaga(action) {
 
 export function* nextPage(action) {
   try {
-    const { lastSnapShot } = action.payload;
-    if (!lastSnapShot) yield put(actionsUI.INFOR_FIREBASE({ message: "Hết rồi !!!" }));
-    else {
-      const result = yield call(getDataCollects, "blogs", lastSnapShot, null);
-      if (result) {
-        if (result.array.length !== 0) yield put(actionsBlog.REDUCER_LOAD_BLOG_SUCCESS(result));
-        else {
-          yield put(actionsUI.INFOR_FIREBASE({ message: "Hết rồi !!!" }));
-          put(actionsBlog.REDUCER_LOAD_BLOG_SUCCESS(result));
-        }
-      } else yield put(actionsUI.ERROR_FIREBASE({ message: "LOAD_BLOG_FAIl" }));
-    }
+    const { query } = action.payload;
+    const result = yield call(getNextDataCollects, "blogs", query);
+    if (result) {
+      if (result.data && result.data.length !== 0)
+        yield put(actionsBlog.REDUCER_LOAD_BLOG_SUCCESS(result));
+      else yield put(actionsUI.INFOR_FIREBASE({ message: "Bạn đã xem hết rồi ^^" }));
+    } else yield put(actionsUI.ERROR_FIREBASE({ message: "LOAD_BLOG_FAIL" }));
   } catch (error) {
     yield put(actionsUI.ERROR_FIREBASE(error));
   }
-}
-
-export function* previousPage(action) {
-  const result = yield call(getDataCollects, "blogs", null, action.payload);
-  if (result) {
-    yield put(actionsBlog.REDUCER_LOAD_BLOG_SUCCESS(result));
-  } else yield put(actionsUI.ERROR_FIREBASE({ message: "LOAD_BLOG_FAIl" }));
 }
 
 export default function* rootSaga() {
@@ -117,5 +106,4 @@ export default function* rootSaga() {
   yield takeEvery(actionsSagaUser.loginWithGithub, loginWithGithub);
   yield takeEvery(actionsSagaUser.loginWithFacebook, loginWithFacebook);
   yield takeEvery(actionsSagaBlog.nextPage, nextPage);
-  yield takeEvery(actionsSagaBlog.previousPage, previousPage);
 }

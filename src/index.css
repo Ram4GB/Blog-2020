@@ -31,7 +31,7 @@ p {
   font-family: 'Roboto Slab', serif !important;
 }
 
-span, button, .ant-dropdown-menu-item {
+span, button, .ant-dropdown-menu-item, label, input, select {
   font-family: 'Roboto Slab', serif !important;
 }
 

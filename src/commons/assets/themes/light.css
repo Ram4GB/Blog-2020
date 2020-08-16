@@ -189,3 +189,15 @@ td {
 .ant-layout.layout.light .about-me .banner svg {
   color: #333;
 }
+
+.ant-layout.layout.light .blog-card .author {
+  color: #5f6368;
+}
+
+.ant-layout.layout.light .blog-card .author:hover {
+  color: #49b882;
+}
+
+.ant-layout.layout.light .blog-card .date {
+  color: #5f6368;
+}
