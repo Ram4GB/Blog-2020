@@ -52,6 +52,8 @@ export default {
     pleaseEnterEmail: "Mời bạn điền email",
     emailAddress: "Mời bạn điền địa chỉ email",
     pleaseEnterPassword: "Mời điền mật khẩu",
-    myPhoto: "Hình ảnh về tôi"
+    myPhoto: "Hình ảnh về tôi",
+    translate_to_en: "Chuyển thành tiếng Anh thành công",
+    translate_to_vi: "Chuyển thành tiếng Việt thành công"
   }
 };
