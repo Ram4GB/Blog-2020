@@ -12,20 +12,23 @@ export default function BlogItem({ blog }) {
   const { t } = useTranslation();
 
   const renderTag = categories => {
-    return categories.map((tag, index) => {
-      return (
-        <Tag
-          // eslint-disable-next-line react/no-array-index-key
-          key={`blog.id_${index}`}
-          style={{ marginLeft: 5, textTransform: "uppercase" }}
-          color="pink"
-        >
-          {tag}
-        </Tag>
-      );
-    });
+    return (
+      categories &&
+      categories.map((tag, index) => {
+        return (
+          <Tag
+            // eslint-disable-next-line react/no-array-index-key
+            key={`blog.id_${index}`}
+            style={{ marginLeft: 5, textTransform: "uppercase" }}
+            color="pink"
+          >
+            {tag}
+          </Tag>
+        );
+      })
+    );
   };
-  return (
+  return blog ? (
     <div onClick={() => history.push(`/${blog.id}/blog`)} className="blog-card">
       {renderTag(blog.category)}
       <h3>{blog.title}</h3>
@@ -46,7 +49,7 @@ export default function BlogItem({ blog }) {
         </button>
       </h4>
     </div>
-  );
+  ) : null;
 }
 
 BlogItem.propTypes = {

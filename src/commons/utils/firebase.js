@@ -19,8 +19,8 @@ const facebookProvider = new firebase.auth.FacebookAuthProvider();
 
 firebase.initializeApp(firebaseConfig);
 
-const database = firebase.firestore();
-const limit = 4;
+export const database = firebase.firestore();
+export const limit = 4;
 
 export const getDataCollects = async collectionName => {
   const query = database
