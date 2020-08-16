@@ -3,7 +3,6 @@ import { Route, Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
 import MainLayout from "./MainLayout";
 import Homepage from "../../pages/Homepage";
-import AboutPage from "../../pages/AboutPage";
 import WriteBlogPage from "../../pages/WriteBlogPage";
 import BlogInformation from "../../pages/BlogInformation";
 import Loginpage from "../../pages/LoginPage";
@@ -22,7 +21,6 @@ export default function Router() {
         <MainLayout admin>
           <Switch>
             <Route exact path="/" component={Homepage} />
-            <Route exact path="/about" component={AboutPage} />
             <Route exact path="/:id/blog" component={BlogInformation} />
             <Route exact path="/write_blog" component={WriteBlogPage} />
             <Route exact path="/:id/blog/edit" component={WriteBlogPage} />
@@ -38,7 +36,6 @@ export default function Router() {
       <MainLayout>
         <Switch>
           <Route exact path="/" component={Homepage} />
-          <Route exact path="/about" component={AboutPage} />
           <Route exact path="/:id/blog" component={BlogInformation} />
           <Route exact path="/login" component={Loginpage} />
           <Route exact path="/profile" component={UserProfile} />
@@ -52,7 +49,6 @@ export default function Router() {
     <MainLayout>
       <Switch>
         <Route exact path="/" component={Homepage} />
-        <Route exact path="/about" component={AboutPage} />
         <Route exact path="/:id/blog" component={BlogInformation} />
         <Route exact path="/login" component={Loginpage} />
         <Route exact path="/about-me" component={AboutMePage} />

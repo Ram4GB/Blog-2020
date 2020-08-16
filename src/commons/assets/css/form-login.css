@@ -1,6 +1,6 @@
 .form-login {
   width: 80%;
-  margin: 10px auto !important;
+  margin: 70px auto !important;
   max-width: 800px;
   border: 1px solid #cccccc;
   padding: 20px !important;
@@ -35,6 +35,10 @@
 
 .form-login label {
   font-weight: bold;
+}
+
+.ant-form-vertical .ant-form-item-label > label, .ant-col-24.ant-form-item-label > label, .ant-col-xl-24.ant-form-item-label > label{
+  font-family: 'Roboto Slab', serif !important;
 }
 
 @media only screen and (max-width: 700px) {

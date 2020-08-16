@@ -2,7 +2,7 @@ export default {
   translation: {
     back: "Quay lại",
     name: "Tên",
-    leminhcuong: "Le Minh Cuong",
+    leminhcuong: "Lê Minh Cường",
     age: "Tuổi",
     location: "Nơi sống",
     hochiminh: "Hồ Chí Minh",
@@ -51,6 +51,7 @@ export default {
     password: "Mật khẩu",
     pleaseEnterEmail: "Mời bạn điền email",
     emailAddress: "Mời bạn điền địa chỉ email",
-    pleaseEnterPassword: "Mời điền mật khẩu"
+    pleaseEnterPassword: "Mời điền mật khẩu",
+    myPhoto: "Hình ảnh về tôi"
   }
 };

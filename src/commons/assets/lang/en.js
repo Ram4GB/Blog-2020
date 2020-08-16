@@ -44,6 +44,7 @@ export default {
       "This login use for author. User can also use this. We will update this later. Sorry for this.",
     password: "Password",
     pleaseEnterEmail: "Please enter email",
-    pleaseEnterPassword: "Please enter password"
+    pleaseEnterPassword: "Please enter password",
+    myPhoto: "My photo"
   }
 };
