@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect } from "react";
 import { Layout, Menu, Dropdown, notification, BackTop, Modal } from "antd";
 import PropTypes from "prop-types";
@@ -10,7 +11,8 @@ import {
   LogoutOutlined,
   LoginOutlined,
   UserOutlined,
-  WhatsAppOutlined
+  WhatsAppOutlined,
+  SyncOutlined
 } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
@@ -93,6 +95,30 @@ function MainLayout({ children, admin }) {
     i18n.changeLanguage(value.key);
   };
 
+  const handleSelectMenuMobile = value => {
+    let newLang = "";
+    switch (value.key) {
+      case "/logout":
+        return "";
+      case "/change-language":
+        if (lang === "vi") newLang = "en";
+        else newLang = "vi";
+        dispatch(actionUI.SET_LANG(newLang));
+        i18n.changeLanguage(newLang);
+        if (newLang === "en")
+          notification.success({
+            message: t("translate_to_en")
+          });
+        else
+          notification.success({
+            message: t("translate_to_vi")
+          });
+        return null;
+      default:
+        return history.push(value.key);
+    }
+  };
+
   return (
     <Layout className={`layout ${theme}`}>
       <Header
@@ -113,8 +139,6 @@ function MainLayout({ children, admin }) {
             </Menu.Item>
             <Menu.Item key="/">{t("homepage")}</Menu.Item>
             <Menu.Item key="/about-me">{t("aboutMe")}</Menu.Item>
-            {/* <Menu.Item key="/about">Về tôi</Menu.Item> */}
-            {/* <Menu.Item key="/news">Tin tức</Menu.Item> */}
             {admin ? <Menu.Item key="/write_blog">{t("writing")}</Menu.Item> : null}
             {isLogin === false ? (
               <Menu.Item className="login" key="/login">
@@ -184,7 +208,7 @@ function MainLayout({ children, admin }) {
             mode="horizontal"
             selectedKeys={[url.pathname]}
             style={{ lineHeight: "64px", fontWeight: "700", width: "100%" }}
-            onSelect={value => (value.key !== "/logout" ? history.push(value.key) : "")}
+            onSelect={handleSelectMenuMobile}
           >
             <Menu.Item key="/">
               <HomeOutlined />
@@ -204,6 +228,10 @@ function MainLayout({ children, admin }) {
 
             <Menu.Item key="/about-me">
               <WhatsAppOutlined />
+            </Menu.Item>
+
+            <Menu.Item key="/change-language">
+              <SyncOutlined />
             </Menu.Item>
 
             {!isLogin ? (

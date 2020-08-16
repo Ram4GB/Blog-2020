@@ -45,6 +45,8 @@ export default {
     password: "Password",
     pleaseEnterEmail: "Please enter email",
     pleaseEnterPassword: "Please enter password",
-    myPhoto: "My photo"
+    myPhoto: "My photo",
+    translate_to_en: "Translate to English successfully",
+    translate_to_vi: "Translate to Vietnamese successfully"
   }
 };
