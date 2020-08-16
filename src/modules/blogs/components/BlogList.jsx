@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Button } from "antd";
 import Lottie from "react-lottie";
 import { useTranslation } from "react-i18next";
-import uuid from "uuid";
+import * as uuid from "uuid";
 import * as actionsSagaBlog from "../actions";
 import { MODULE_NAME as MODULE_TODO } from "../models";
 import BlogItem from "./BlogItem";
