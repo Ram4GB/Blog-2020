@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/accessible-emoji */
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from "react";
@@ -13,6 +14,7 @@ import {
 } from "@ant-design/icons";
 import { useHistory } from "react-router";
 import { useTranslation } from "react-i18next";
+import CardPhoto from "../modules/blogs/components/CardPhoto";
 
 export default function AboutMePage() {
   const history = useHistory();
@@ -27,7 +29,7 @@ export default function AboutMePage() {
         <Col lg={6}>
           <img
             className="img-author"
-            src="https://live.staticflickr.com/8076/8323936425_137d023a0f.jpg"
+            src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-9/101353423_1145216809180505_844524530440618598_n.jpg?_nc_cat=111&_nc_sid=85a577&_nc_ohc=A0-uRXvYF0IAX9vNkzS&_nc_ht=scontent-sin6-1.xx&oh=023694eec48721d1264089f552642017&oe=5F601F07"
             alt=""
           />
           <div className="group-information">
@@ -88,6 +90,15 @@ export default function AboutMePage() {
                 <YahooOutlined />
               </Button>
             </Tooltip>
+          </div>
+          <h3>{t("myPhoto")}</h3>
+          <div className="group-photo">
+            <Row gutter={6}>
+              <CardPhoto src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-9/101353423_1145216809180505_844524530440618598_n.jpg?_nc_cat=111&_nc_sid=85a577&_nc_ohc=A0-uRXvYF0IAX9vNkzS&_nc_ht=scontent-sin6-1.xx&oh=023694eec48721d1264089f552642017&oe=5F601F07" />
+              <CardPhoto src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-9/101353423_1145216809180505_844524530440618598_n.jpg?_nc_cat=111&_nc_sid=85a577&_nc_ohc=A0-uRXvYF0IAX9vNkzS&_nc_ht=scontent-sin6-1.xx&oh=023694eec48721d1264089f552642017&oe=5F601F07" />
+              <CardPhoto src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-9/101353423_1145216809180505_844524530440618598_n.jpg?_nc_cat=111&_nc_sid=85a577&_nc_ohc=A0-uRXvYF0IAX9vNkzS&_nc_ht=scontent-sin6-1.xx&oh=023694eec48721d1264089f552642017&oe=5F601F07" />
+              <CardPhoto src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-9/101353423_1145216809180505_844524530440618598_n.jpg?_nc_cat=111&_nc_sid=85a577&_nc_ohc=A0-uRXvYF0IAX9vNkzS&_nc_ht=scontent-sin6-1.xx&oh=023694eec48721d1264089f552642017&oe=5F601F07" />
+            </Row>
           </div>
         </Col>
         <Col className="myself" lg={18}>

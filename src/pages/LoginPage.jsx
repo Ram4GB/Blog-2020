@@ -73,13 +73,13 @@ export default function Loginpage() {
         </Form.Item>
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <Form.Item>
-          <Button size="large" type="primary" htmlType="submit">
+          <Button size="middle" type="primary" htmlType="submit">
             {t("login")}
           </Button>
-          <Button size="large" className="button-google" onClick={LoginWithGoogle}>
+          <Button size="middle" className="button-google" onClick={LoginWithGoogle}>
             <GoogleOutlined />
           </Button>
-          <Button disabled size="large" className="button-facebook" onClick={LoginWithFacebook}>
+          <Button disabled size="middle" className="button-facebook" onClick={LoginWithFacebook}>
             <FacebookOutlined />
           </Button>
         </Form.Item>

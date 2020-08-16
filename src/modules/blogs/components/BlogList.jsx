@@ -41,7 +41,7 @@ export default function BlogList() {
   };
   return (
     <div>
-      <div>{blogs ? renderBlogs() : null}</div>
+      <div>{blogs ? <div className="blog-list-container">{renderBlogs()}</div> : null}</div>
       <div>
         <Button onClick={next} style={{ float: "right", width: "100%" }} className="next">
           {t("loadmore")}

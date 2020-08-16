@@ -16,7 +16,8 @@
 
 .ant-layout-content {
   font-family: "Montserrat", sans-serif;
-  min-height: calc(100vh - 66px) !important;
+  min-height: calc(100vh) !important;
+  margin-top: 65px;
 }
 
 @media only screen and (max-width: 760px) {

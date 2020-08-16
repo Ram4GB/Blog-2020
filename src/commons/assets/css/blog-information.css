@@ -1,3 +1,7 @@
+.blog-list-container {
+    margin: 0px 10px;
+}
+
 .blog-information {
     font-family: 'Roboto Slab', serif;
     padding: 10px 50px;
