@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Fira+Code:400,500,600,700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300;400;500;600;700;900&display=swap');
+
+:root {
+  --body-font: 'Work Sans', sans-serif !important;
+}
 
 :root {
   font-size: 16px !important;
@@ -28,11 +32,11 @@ p {
   padding: 0 !important;
   margin-top: 20px !important;
   margin-bottom: 20px !important;
-  font-family: 'Roboto Slab', serif !important;
+  font-family: var(--body-font);
 }
 
 span, button, .ant-dropdown-menu-item, label, input, select {
-  font-family: 'Roboto Slab', serif !important;
+  font-family: var(--body-font);
 }
 
 .mde-tabs {
@@ -57,7 +61,7 @@ table,
 th,
 td {
   border: 2px solid #dfdfdf;
-  font-family: 'Roboto Slab', serif;
+  font-family: var(--body-font)
 }
 
 table tr td:first-child {

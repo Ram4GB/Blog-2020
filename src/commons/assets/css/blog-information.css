@@ -3,7 +3,7 @@
 }
 
 .blog-information {
-    font-family: 'Roboto Slab', serif;
+    font-family: var(--body-font);
     padding: 10px 50px;
     border: 1px solid #cccccc;
     margin: 30px 0px;
@@ -20,8 +20,8 @@
   }
   
 .blog-information p{
-    line-height: 1.8    ;
-    font-size: 1.2rem;
+    line-height: 1.2;
+    font-size: 1rem;
 }
 
 .blog-information h1 strong::before{
@@ -36,13 +36,13 @@
 .blog-information .author{
     text-align: center;
     font-size: 1rem;
-    font-family: 'Roboto Slab', serif;;
+    font-family: var(--body-font);;
     font-weight: bold;
 }
 
 .blog-information .date{
     text-align: center;
-    font-family: 'Roboto Slab', serif;
+    font-family: var(--body-font);
     font-weight: bold;
 }
 
@@ -64,7 +64,7 @@
 }
 
 /* .blog-information p{
-    font-family: 'Roboto Slab', serif
+    font-family: var(--body-font)
     line-height: 1.5;
 } */
 

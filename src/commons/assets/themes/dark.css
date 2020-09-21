@@ -206,7 +206,7 @@ td {
 }
 
 .ant-layout.layout.dark .profile .information {
-  font-family: 'Roboto Slab', serif;
+  font-family: var(--body-font);
   color: #ffffff;
   padding-left: 20px;
   font-size: 1.3rem;

@@ -5,7 +5,6 @@ import React from "react";
 import { Row, Col, Progress, Tooltip, Button } from "antd";
 import {
   FacebookOutlined,
-  GoogleOutlined,
   YahooOutlined,
   SmileOutlined,
   CheckCircleOutlined,
@@ -27,11 +26,7 @@ export default function AboutMePage() {
       </Button>
       <Row gutter={6}>
         <Col lg={6}>
-          <img
-            className="img-author"
-            src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-9/101353423_1145216809180505_844524530440618598_n.jpg?_nc_cat=111&_nc_sid=85a577&_nc_ohc=A0-uRXvYF0IAX9vNkzS&_nc_ht=scontent-sin6-1.xx&oh=023694eec48721d1264089f552642017&oe=5F601F07"
-            alt=""
-          />
+          <img className="img-author" src="/avatar.jpg" alt="" />
           <div className="group-information">
             <Row className="row-info">
               <Col lg={12}>
@@ -80,11 +75,6 @@ export default function AboutMePage() {
             >
               <GithubOutlined />
             </Button>
-            <Tooltip placement="top" title="minhcuongdeptrai1@gmail.com">
-              <Button style={{ width: "100%" }}>
-                <GoogleOutlined />
-              </Button>
-            </Tooltip>
             <Tooltip placement="top" title="leminhcuong2988@yahoo.com.vn">
               <Button style={{ width: "100%" }}>
                 <YahooOutlined />
@@ -94,10 +84,10 @@ export default function AboutMePage() {
           <h3>{t("myPhoto")}</h3>
           <div className="group-photo">
             <Row gutter={6}>
-              <CardPhoto src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-9/101353423_1145216809180505_844524530440618598_n.jpg?_nc_cat=111&_nc_sid=85a577&_nc_ohc=A0-uRXvYF0IAX9vNkzS&_nc_ht=scontent-sin6-1.xx&oh=023694eec48721d1264089f552642017&oe=5F601F07" />
-              <CardPhoto src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-9/101353423_1145216809180505_844524530440618598_n.jpg?_nc_cat=111&_nc_sid=85a577&_nc_ohc=A0-uRXvYF0IAX9vNkzS&_nc_ht=scontent-sin6-1.xx&oh=023694eec48721d1264089f552642017&oe=5F601F07" />
-              <CardPhoto src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-9/101353423_1145216809180505_844524530440618598_n.jpg?_nc_cat=111&_nc_sid=85a577&_nc_ohc=A0-uRXvYF0IAX9vNkzS&_nc_ht=scontent-sin6-1.xx&oh=023694eec48721d1264089f552642017&oe=5F601F07" />
-              <CardPhoto src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-9/101353423_1145216809180505_844524530440618598_n.jpg?_nc_cat=111&_nc_sid=85a577&_nc_ohc=A0-uRXvYF0IAX9vNkzS&_nc_ht=scontent-sin6-1.xx&oh=023694eec48721d1264089f552642017&oe=5F601F07" />
+              <CardPhoto src="/avatar.jpg" />
+              <CardPhoto src="/avatar.jpg" />
+              <CardPhoto src="/avatar.jpg" />
+              <CardPhoto src="/avatar.jpg" />
             </Row>
           </div>
         </Col>

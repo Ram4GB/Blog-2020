@@ -1,5 +1,5 @@
 .about-me {
-  font-family: 'Roboto Slab', serif;
+  font-family: var(--body-font);
   letter-spacing: 0.7px;
 }
 

@@ -38,7 +38,7 @@
   text-transform: capitalize;
   font-weight: 400;
   margin-right: 10px;
-  font-family: 'Roboto Slab', serif;
+  font-family: var(--body-font);
 }
 
 .blog-card .author:hover {
@@ -68,7 +68,7 @@
 .blog-card .read-more {
   color: orange;
   transition: all 0.2s ease;
-  font-family: 'Roboto Slab', serif;
+  font-family: var(--body-font);
   font-weight: 300;
   background-color: #ffffff;
   outline: none;

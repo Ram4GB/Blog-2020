@@ -11,7 +11,7 @@
 }
 
 .ant-layout-header {
-  font-family: 'Roboto Slab', serif;
+  font-family: var(--body-font);
 }
 
 .ant-layout-content {
@@ -63,14 +63,14 @@
 }
 
 .ant-notification-notice-message {
-  font-family: 'Roboto Slab', serif;
+  font-family: var(--body-font);
   font-weight: bold;
 }
 
 .btn-back {
   background-color: orange !important;
   color: #ffffff;
-  font-family: 'Roboto Slab', serif;
+  font-family: var(--body-font);
   font-weight: bold !important;
   color: #ffffff !important;
   border: none !important;
@@ -81,7 +81,7 @@
 .next {
   background-color: orange !important;
   color: #ffffff;
-  font-family: 'Roboto Slab', serif;
+  font-family: var(--body-font);
   font-weight: bold !important;
   color: #ffffff !important;
   border: none !important;
@@ -106,6 +106,16 @@
 }
 
 .ant-modal-confirm-body p {
-  font-family: 'Roboto Slab', serif;
+  font-family: var(--body-font);
   font-size: 1.3rem !important;
+}
+
+@media only screen and (max-width: 800px) {
+  .next {
+    float: none !important  ;
+    margin: 0;
+  }
+  .btn-back {
+    margin: 30px 0px 0px 0px;
+  }
 }
